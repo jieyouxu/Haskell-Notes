@@ -1,1 +1,55 @@
-site_name: My Docs
+# Site information
+site_name: 'Haskell Notes'
+
+# Repository information
+repo_name: 'Haskell-Notes'
+repo_url: 'https://github.com/jieyouxu/haskell-notes'
+
+# Navigation order
+nav:
+  - Foundation: 1-foundation/notes.md
+
+# Theme
+theme:
+  name: 'material'
+  language: 'en'
+  font:
+    text: 'Ubuntu'
+    code: 'Ubuntu Mono'
+  logo: 
+    icon: 'book'
+  palette:
+    primary: 'deep purple'
+    accent: 'indigo'
+  feature:
+    tabs: false
+
+# Markdown extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - meta
+  - footnotes
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# JavaScript
+extra_javascript:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
