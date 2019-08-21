@@ -267,6 +267,26 @@
     Structure of Lambda Calculus
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alpha-equivalence" title="Alpha Equivalence" class="md-nav__link">
+    Alpha Equivalence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beta-reduction" title="Beta Reduction" class="md-nav__link">
+    Beta Reduction
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -318,6 +338,26 @@
   <a href="#structure-of-lambda-calculus" title="Structure of Lambda Calculus" class="md-nav__link">
     Structure of Lambda Calculus
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alpha-equivalence" title="Alpha Equivalence" class="md-nav__link">
+    Alpha Equivalence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beta-reduction" title="Beta Reduction" class="md-nav__link">
+    Beta Reduction
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -472,6 +512,156 @@ problem, and names given to it allows abstraction — abstracting away from
 tiny details to simplify the cognitive burden and facilitates code reuse.
 By using named variables, we can reuse the abstraction for potentially
 many instances of similar problems.</p>
+</div>
+<h3 id="alpha-equivalence">Alpha Equivalence<a class="headerlink" href="#alpha-equivalence" title="Permanent link">&para;</a></h3>
+<p>For some lambda abstraction such as</p>
+<div>
+<div class="MathJax_Preview">
+    \lambda x \ldotp x
+</div>
+<script type="math/tex; mode=display">
+    \lambda x \ldotp x
+</script>
+</div>
+<p>The named variable <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> has no semantic meaning apart from being a placeholder
+for input values. Hence, it might as well be <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> or <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> or <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>, etc. This means
+that the lambda terms</p>
+<div>
+<div class="MathJax_Preview">
+    \lambda x \ldotp x 
+        \Leftrightarrow \lambda y \ldotp y
+        \Leftrightarrow \lambda \beta \ldotp \beta
+</div>
+<script type="math/tex; mode=display">
+    \lambda x \ldotp x 
+        \Leftrightarrow \lambda y \ldotp y
+        \Leftrightarrow \lambda \beta \ldotp \beta
+</script>
+</div>
+<p>Have <strong>alpba equivalence</strong> — they are the same function.</p>
+<h3 id="beta-reduction">Beta Reduction<a class="headerlink" href="#beta-reduction" title="Permanent link">&para;</a></h3>
+<p>Upon applying a function to an argument, all occurrences of the bound variable
+within the body (that is the parameter) are substituted with the input
+expression. The head can safely be eliminated as it only serves the purpose
+of binding a name to the parameter.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>For the abstraction</p>
+<div>
+<div class="MathJax_Preview">
+    \lambda x \ldotp x
+</div>
+<script type="math/tex; mode=display">
+    \lambda x \ldotp x
+</script>
+</div>
+<p>If the abstraction is applied to <span><span class="MathJax_Preview">2</span><script type="math/tex">2</script></span>, then:</p>
+<ol>
+<li>Substitute <span><span class="MathJax_Preview">2</span><script type="math/tex">2</script></span> for every occurrence of <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> in the body.</li>
+<li>Eliminate the head.</li>
+</ol>
+<p>That is,</p>
+<div>
+<div class="MathJax_Preview">
+    \begin{aligned}
+        (\lambda x \ldotp x)\ 2 &amp; \\
+        2 &amp; \\
+    \end{aligned}
+</div>
+<script type="math/tex; mode=display">
+    \begin{aligned}
+        (\lambda x \ldotp x)\ 2 & \\
+        2 & \\
+    \end{aligned}
+</script>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Identity function</p>
+<p>The previous example function <span><span class="MathJax_Preview">\lambda x \ldotp x</span><script type="math/tex">\lambda x \ldotp x</script></span> is the <strong>identity
+function</strong> since it simply returns whatever input expression was given to
+it.</p>
+<p>This is like <span><span class="MathJax_Preview">f(x) = x</span><script type="math/tex">f(x) = x</script></span>.</p>
+</div>
+<p>To denote precedence, let parentheses <span><span class="MathJax_Preview">()</span><script type="math/tex">()</script></span> be used to group the body expression
+of an abstraction.</p>
+<div class="admonition example">
+<p class="admonition-title">Parentheses showing precedence</p>
+<div>
+<div class="MathJax_Preview">
+    (\lambda x \ldotp x + 1)
+</div>
+<script type="math/tex; mode=display">
+    (\lambda x \ldotp x + 1)
+</script>
+</div>
+<p>Here the body expression is <span><span class="MathJax_Preview">x + 1</span><script type="math/tex">x + 1</script></span>.</p>
+</div>
+<p>A lambda abstraction can also be applied to another lambda abstraction. Square
+brackets <span><span class="MathJax_Preview">[]</span><script type="math/tex">[]</script></span> shall be used to denote substitution.</p>
+<div class="admonition example">
+<p class="admonition-title">Square brackets showing substitution</p>
+<div>
+<div class="MathJax_Preview">
+    \newcommand{\coloneq}{\mathrel{\vcenter{:}}=}
+    \begin{aligned}
+        (\lambda x \ldotp x)(\lambda y \ldotp y) &amp; \\
+        [x \coloneq (\lambda y \ldotp y)] &amp; \\
+        (\lambda y \ldotp y) &amp; \\
+    \end{aligned}
+</div>
+<script type="math/tex; mode=display">
+    \newcommand{\coloneq}{\mathrel{\vcenter{:}}=}
+    \begin{aligned}
+        (\lambda x \ldotp x)(\lambda y \ldotp y) & \\
+        [x \coloneq (\lambda y \ldotp y)] & \\
+        (\lambda y \ldotp y) & \\
+    \end{aligned}
+</script>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Associativity of application</p>
+<p><strong>Applications</strong> in lambda calculus are <em>left associative</em> from the right
+to the left.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Left associativity of lambda application</p>
+<div>
+<div class="MathJax_Preview">
+    (\lambda x \ldotp x)(\lambda y \ldotp y) z
+    \Leftrightarrow
+    ((\lambda x \ldotp x)(\lambda y \ldotp y))z
+</div>
+<script type="math/tex; mode=display">
+    (\lambda x \ldotp x)(\lambda y \ldotp y) z
+    \Leftrightarrow
+    ((\lambda x \ldotp x)(\lambda y \ldotp y))z
+</script>
+</div>
+<p>This expression may be reduced as</p>
+<div>
+<div class="MathJax_Preview">
+    \newcommand{\coloneq}{\mathrel{\vcenter{:}}=}
+    \begin{aligned}
+        (\lambda x \ldotp x)(\lambda y \ldotp y) z &amp; \\
+        [x \coloneq (\lambda y \ldotp y)] &amp; \\
+        (\lambda y \ldotp y) z \\
+        [y \coloneq z] \\
+        z
+    \end{aligned}
+</div>
+<script type="math/tex; mode=display">
+    \newcommand{\coloneq}{\mathrel{\vcenter{:}}=}
+    \begin{aligned}
+        (\lambda x \ldotp x)(\lambda y \ldotp y) z & \\
+        [x \coloneq (\lambda y \ldotp y)] & \\
+        (\lambda y \ldotp y) z \\
+        [y \coloneq z] \\
+        z
+    \end{aligned}
+</script>
+</div>
 </div>
                 
                   
