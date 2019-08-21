@@ -128,3 +128,23 @@ And is applied to an *argument*, which is an input value.
     tiny details to simplify the cognitive burden and facilitates code reuse.
     By using named variables, we can reuse the abstraction for potentially
     many instances of similar problems.
+
+### Alpha Equivalence
+
+For some lambda abstraction such as
+
+$$
+    \lambda x \ldotp x
+$$
+
+The named variable $x$ has no semantic meaning apart from being a placeholder
+for input values. Hence, it might as well be $a$ or $b$ or $c$, etc. This means
+that the lambda terms
+
+$$
+    \lambda x \ldotp x 
+        \Leftrightarrow \lambda y \ldotp y
+        \Leftrightarrow \lambda \beta \ldotp \beta
+$$
+
+Have **alpba equivalence** — they are the same function.
