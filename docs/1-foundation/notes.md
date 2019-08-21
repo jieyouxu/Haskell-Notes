@@ -148,3 +148,85 @@ $$
 $$
 
 Have **alpba equivalence** — they are the same function.
+
+### Beta Reduction
+
+Upon applying a function to an argument, all occurrences of the bound variable
+within the body (that is the parameter) are substituted with the input
+expression. The head can safely be eliminated as it only serves the purpose
+of binding a name to the parameter.
+
+!!! example
+    For the abstraction
+
+    $$
+        \lambda x \ldotp x
+    $$
+
+    If the abstraction is applied to $2$, then:
+
+    1. Substitute $2$ for every occurrence of $x$ in the body.
+    2. Eliminate the head.
+
+    That is,
+
+    $$
+        \begin{aligned}
+            (\lambda x \ldotp x)\ 2 & \\
+            2 & \\
+        \end{aligned}
+    $$
+
+!!! note "Identity function"
+    The previous example function $\lambda x \ldotp x$ is the **identity
+    function** since it simply returns whatever input expression was given to
+    it.
+
+    This is like $f(x) = x$.
+
+To denote precedence, let parentheses $()$ be used to group the body expression
+of an abstraction.
+
+!!! example "Parentheses showing precedence"
+    $$
+        (\lambda x \ldotp x + 1)
+    $$
+
+    Here the body expression is $x + 1$.
+
+A lambda abstraction can also be applied to another lambda abstraction. Square
+brackets $[]$ shall be used to denote substitution.
+
+!!! example "Square brackets showing substitution"
+    $$
+        \newcommand{\coloneq}{\mathrel{\vcenter{:}}=}
+        \begin{aligned}
+            (\lambda x \ldotp x)(\lambda y \ldotp y) & \\
+            [x \coloneq (\lambda y \ldotp y)] & \\
+            (\lambda y \ldotp y) & \\
+        \end{aligned}
+    $$
+
+!!! note "Associativity of application"
+    **Applications** in lambda calculus are *left associative* from the right
+    to the left.
+
+!!! example "Left associativity of lambda application"
+    $$
+        (\lambda x \ldotp x)(\lambda y \ldotp y) z
+        \Leftrightarrow
+        ((\lambda x \ldotp x)(\lambda y \ldotp y))z
+    $$
+
+    This expression may be reduced as
+
+    $$
+        \newcommand{\coloneq}{\mathrel{\vcenter{:}}=}
+        \begin{aligned}
+            (\lambda x \ldotp x)(\lambda y \ldotp y) z & \\
+            [x \coloneq (\lambda y \ldotp y)] & \\
+            (\lambda y \ldotp y) z \\
+            [y \coloneq z] \\
+            z
+        \end{aligned}
+    $$
