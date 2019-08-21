@@ -262,6 +262,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#structure-of-lambda-calculus" title="Structure of Lambda Calculus" class="md-nav__link">
+    Structure of Lambda Calculus
+  </a>
+  
+</li>
+      
       
       
       
@@ -307,6 +314,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#structure-of-lambda-calculus" title="Structure of Lambda Calculus" class="md-nav__link">
+    Structure of Lambda Calculus
+  </a>
+  
+</li>
+      
       
       
       
@@ -345,7 +359,7 @@ such that they can be used as:</p>
 <li><em>Values</em>;</li>
 <li>Passed as <em>arguments</em>/<em>inputs</em> to other functions.</li>
 </ul>
-<p><strong>Purity</strong> in FP can mean <em>referential transparency</em>:</p>
+<p><strong>Purity</strong> in FP can mean <strong>referential transparency</strong>:</p>
 <ul>
 <li>Given a function <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>, if it is given the same input <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>, it will always
   return the same output <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>, like a mathematical function.</li>
@@ -380,7 +394,7 @@ the output set (<strong>codomain</strong>) <span><span class="MathJax_Preview">\
 </script>
 </div>
 </div>
-<p>Then <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> is <em>referentially transparent</em> — for instance, when <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> receives input
+<p>Then <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> is <strong>referentially transparent</strong> — for instance, when <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> receives input
 <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> it always outputs <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>. This ensures that the function is in fact
 <em>predictable</em>.</p>
 <div class="admonition note">
@@ -404,6 +418,60 @@ relationship between the input <span><span class="MathJax_Preview">x</span><scri
 <p>Upon applying the function <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>, we substitute its argument <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> for a
 concrete value, for instance <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>. Then <span><span class="MathJax_Preview">f(1) = 1 + 1 = 2</span><script type="math/tex">f(1) = 1 + 1 = 2</script></span>. This establishes
 a mapping <span><span class="MathJax_Preview">f(1) \mapsto 2</span><script type="math/tex">f(1) \mapsto 2</script></span>.</p>
+</div>
+<h2 id="structure-of-lambda-calculus">Structure of Lambda Calculus<a class="headerlink" href="#structure-of-lambda-calculus" title="Permanent link">&para;</a></h2>
+<p>The <em>lambda calculus</em> comprises three <strong>lambda terms</strong>:</p>
+<ol>
+<li>Expressions</li>
+<li>Variables</li>
+<li>Abstractions</li>
+</ol>
+<p>An <strong>expression</strong> is either one of the three lambda terms or a combination of
+them (hence an inductive definition).</p>
+<ul>
+<li>The simplest expression is a single variable, which has no meaning or value
+and are simply placeholder names for inputs.</li>
+</ul>
+<p>An <strong>abstraction</strong> is a <em>function</em>; it has</p>
+<ul>
+<li>A <em>head</em> (a <em>lambda</em>)</li>
+<li>A <em>body</em></li>
+</ul>
+<p>And is applied to an <em>argument</em>, which is an input value.</p>
+<div class="admonition note">
+<p class="admonition-title">Abstraction</p>
+<p>An <strong>abstraction</strong> is built from a <strong>head</strong> and a <strong>body</strong>.</p>
+<p>The <strong>head</strong> of a function is a <span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> followed by a variable name.</p>
+<p>The <strong>body</strong> is another <em>expression</em>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Simple abstraction</p>
+<div>
+<div class="MathJax_Preview">
+    \lambda x \ldotp x
+</div>
+<script type="math/tex; mode=display">
+    \lambda x \ldotp x
+</script>
+</div>
+<p>The variable <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> named in the head is the abstraction's <em>parameter</em> which 
+<em>binds</em> all occurrences of <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> in the body.</p>
+<p>When the abstraction is applied with an input value <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> given to <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>, all
+occurrences of <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> in the body takes on that input value <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.</p>
+<p>In the abstraction, the <span><span class="MathJax_Preview">\lambda x</span><script type="math/tex">\lambda x</script></span> part is the <em>head</em>, the <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> in the
+head is the single <em>parameter</em>, and the <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> to the right of the <span><span class="MathJax_Preview">\ldotp</span><script type="math/tex">\ldotp</script></span> is
+the body. Note that the <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> in the body is <em>bound</em> by the parameter of the
+same name. The dot <span><span class="MathJax_Preview">\ldotp</span><script type="math/tex">\ldotp</script></span> acts as a separator.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Anonymous function</p>
+<p>The previous example's lambda abstraction <span><span class="MathJax_Preview">\lambda x \ldotp x</span><script type="math/tex">\lambda x \ldotp x</script></span> does not
+have a name, hence it is <em>anonymous</em>. Hence it cannot be called by name.</p>
+<p>It is called an <em>abstraction</em> since it is a generalization of a concrete
+problem, and names given to it allows abstraction — abstracting away from
+tiny details to simplify the cognitive burden and facilitates code reuse.
+By using named variables, we can reuse the abstraction for potentially
+many instances of similar problems.</p>
 </div>
                 
                   
