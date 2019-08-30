@@ -273,3 +273,95 @@ Those variables in the expression body which are not named in the head are
         
         Head was eliminated and no more heads are left, and since $z$ and $y$ 
         are free variables no further reductions may be applied.
+
+### Multiple Arguments
+
+Each lambda may have only one parameter and thus can only accept one argument.
+Should an expression require multiple arguments, it must be composed from
+multiple nested heads. When such composite lambda is applied once, the leftmost/
+outmost head is first eliminated, and the next is then applied. Such method
+of having nested heads is termed **currying**.
+
+!!! note "Currying"
+    An abstraction such as 
+
+    $$
+        \lambda x y \ldotp x y
+    $$
+
+    Is shorthand for
+
+    $$
+        \lambda x \ldotp (\lambda y \ldotp x y)
+    $$
+
+    When the first argument $x$ is applied, $x$ is bound and the outer lambda
+    is eliminated to become $\lambda y \ldotp x y$ with some applied $x$ value.
+
+!!! example "Reduction of a multi-argument lambda"
+    Let
+
+    $$
+        \lambda x y \ldotp x y
+    $$
+
+    Be applied to $1$ and $2$ respectively.
+
+    Then
+
+    $$
+        \begin{aligned}
+            (\lambda x y \ldotp x y)\ 1\ 2 & \\
+            (\lambda x \ldotp (\lambda y \ldotp x y))\ 1\ 2 & \\
+            [x \coloneq 1] & \\
+            (\lambda y \ldotp 1 y)\ 2 & \\
+            [y \coloneq 2] & \\
+            1\ 2 & \\
+        \end{aligned}
+    $$
+
+### Beta Normal Form
+
+A **beta normal form** (BNF) is when some lambda expression cannot be beta
+reduced any further - a fully evaluated expression or program.
+
+### Combinator
+
+A **combinator** is a lambda term with *no* free variables, and only serve to
+*combine* given arguments.
+
+!!! example "Valid combinators"
+    1. $\lambda x \ldotp x$
+
+        $x$ is the only variable and is bound.
+
+    2. $\lambda x y \ldotp x$
+
+    3. $\lambda x y z \ldotp x z (y z)$
+
+!!! exmaple "Not combinators"
+    1. $\lambda y \ldotp x$
+
+        $x$ is a free variable.
+    
+    2. $\lambda x \ldotp x z$
+
+        $z$ is a free variable.
+
+### Divergence
+
+Some lambda terms do not reduce to a beta normal form because they **diverge**.
+
+**Divergence** refers to the evaluation process never terminates.
+
+!!! example "Omega lambda term (diverging)"
+    1. $(\lambda x \ldotp x x)(\lambda x \ldotp x x)$
+
+        $x$ in first lambda's head becomes second lambda.
+    
+    2. $([x \coloneq (\lambda x \ldotp x x)]) x x$
+
+    3. $(\lambda x \ldotp x x)(\lambda x \ldotp x x)$
+
+        Substitution of $(\lambda x \ldotp x x)$ for $x$ causes the original 
+        lambda to reappear and thus evaluation cannot terminate.
