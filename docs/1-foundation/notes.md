@@ -94,7 +94,9 @@ An **abstraction** is a *function*; it has
 - A *head* (a *lambda*)
 - A *body*
 
-And is applied to an *argument*, which is an input value.
+And is applied to an *argument*, which is an input value. Hereafter a
+lambda abstraction will be referred to as a "*lambda*" or an "*abstraction*" for
+brevity.
 
 !!! note "Abstraction"
     An **abstraction** is built from a **head** and a **body**.
@@ -230,3 +232,44 @@ brackets $[]$ shall be used to denote substitution.
             z
         \end{aligned}
     $$
+
+#### Free Variables
+
+The *head* of an lambda abstraction provides information on which named variable
+is bounded to be in scope when the function is applied.
+
+Those variables in the expression body which are not named in the head are
+**free variables**.
+
+!!! example "Free variable"
+    In the lambda abstraction
+
+    $$
+        \lambda x \ldotp x y
+    $$
+
+    $y$ is a *free variable* as it is not named in the head. It cannot be
+    reduced when the function is applied to an argument.
+
+!!! example "Applying lambda abstraction to a variable"
+    The lambda abstraction
+
+    $$
+        \lambda x \ldotp x y
+    $$
+
+    Can be applied to some variable $z$
+
+    1. $(\lambda x \ldotp x y) z$.
+        
+        The lambda can be applied to the argument $z$.
+
+    2. $(\lambda [x \coloneq z] \ldotp x y)$.
+        
+        $x$ is the bound variable and its instances shall be replaced by $z$,
+        with the head being eliminated.
+
+    3. $z y$.
+        
+        Head was eliminated and no more heads are left, and since $z$ and $y$ 
+        are free variables no further reductions may be applied.
