@@ -56,8 +56,8 @@
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700|Ubuntu+Mono&display=fallback">
-        <style>body,input{font-family:"Ubuntu","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Ubuntu Mono","Courier New",Courier,monospace}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
     <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
@@ -71,7 +71,7 @@
   
     
     
-    <body dir="ltr" data-md-color-primary="deep-purple" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-primary="deep-purple" data-md-color-accent="pink">
   
     <svg class="md-svg">
       <defs>
@@ -282,6 +282,47 @@
     Beta Reduction
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#free-variables" title="Free Variables" class="md-nav__link">
+    Free Variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-arguments" title="Multiple Arguments" class="md-nav__link">
+    Multiple Arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beta-normal-form" title="Beta Normal Form" class="md-nav__link">
+    Beta Normal Form
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combinator" title="Combinator" class="md-nav__link">
+    Combinator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#divergence" title="Divergence" class="md-nav__link">
+    Divergence
+  </a>
+  
 </li>
         
       </ul>
@@ -352,6 +393,47 @@
           <li class="md-nav__item">
   <a href="#beta-reduction" title="Beta Reduction" class="md-nav__link">
     Beta Reduction
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#free-variables" title="Free Variables" class="md-nav__link">
+    Free Variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-arguments" title="Multiple Arguments" class="md-nav__link">
+    Multiple Arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beta-normal-form" title="Beta Normal Form" class="md-nav__link">
+    Beta Normal Form
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combinator" title="Combinator" class="md-nav__link">
+    Combinator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#divergence" title="Divergence" class="md-nav__link">
+    Divergence
   </a>
   
 </li>
@@ -477,7 +559,9 @@ and are simply placeholder names for inputs.</li>
 <li>A <em>head</em> (a <em>lambda</em>)</li>
 <li>A <em>body</em></li>
 </ul>
-<p>And is applied to an <em>argument</em>, which is an input value.</p>
+<p>And is applied to an <em>argument</em>, which is an input value. Hereafter a
+lambda abstraction will be referred to as a "<em>lambda</em>" or an "<em>abstraction</em>" for
+brevity.</p>
 <div class="admonition note">
 <p class="admonition-title">Abstraction</p>
 <p>An <strong>abstraction</strong> is built from a <strong>head</strong> and a <strong>body</strong>.</p>
@@ -662,6 +746,173 @@ to the left.</p>
     \end{aligned}
 </script>
 </div>
+</div>
+<h4 id="free-variables">Free Variables<a class="headerlink" href="#free-variables" title="Permanent link">&para;</a></h4>
+<p>The <em>head</em> of an lambda abstraction provides information on which named variable
+is bounded to be in scope when the function is applied.</p>
+<p>Those variables in the expression body which are not named in the head are
+<strong>free variables</strong>.</p>
+<div class="admonition example">
+<p class="admonition-title">Free variable</p>
+<p>In the lambda abstraction</p>
+<div>
+<div class="MathJax_Preview">
+    \lambda x \ldotp x y
+</div>
+<script type="math/tex; mode=display">
+    \lambda x \ldotp x y
+</script>
+</div>
+<p><span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> is a <em>free variable</em> as it is not named in the head. It cannot be
+reduced when the function is applied to an argument.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Applying lambda abstraction to a variable</p>
+<p>The lambda abstraction</p>
+<div>
+<div class="MathJax_Preview">
+    \lambda x \ldotp x y
+</div>
+<script type="math/tex; mode=display">
+    \lambda x \ldotp x y
+</script>
+</div>
+<p>Can be applied to some variable <span><span class="MathJax_Preview">z</span><script type="math/tex">z</script></span></p>
+<ol>
+<li>
+<p><span><span class="MathJax_Preview">(\lambda x \ldotp x y) z</span><script type="math/tex">(\lambda x \ldotp x y) z</script></span>.</p>
+<p>The lambda can be applied to the argument <span><span class="MathJax_Preview">z</span><script type="math/tex">z</script></span>.</p>
+</li>
+<li>
+<p><span><span class="MathJax_Preview">(\lambda [x \coloneq z] \ldotp x y)</span><script type="math/tex">(\lambda [x \coloneq z] \ldotp x y)</script></span>.</p>
+<p><span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> is the bound variable and its instances shall be replaced by <span><span class="MathJax_Preview">z</span><script type="math/tex">z</script></span>,
+with the head being eliminated.</p>
+</li>
+<li>
+<p><span><span class="MathJax_Preview">z y</span><script type="math/tex">z y</script></span>.</p>
+<p>Head was eliminated and no more heads are left, and since <span><span class="MathJax_Preview">z</span><script type="math/tex">z</script></span> and <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> 
+are free variables no further reductions may be applied.</p>
+</li>
+</ol>
+</div>
+<h3 id="multiple-arguments">Multiple Arguments<a class="headerlink" href="#multiple-arguments" title="Permanent link">&para;</a></h3>
+<p>Each lambda may have only one parameter and thus can only accept one argument.
+Should an expression require multiple arguments, it must be composed from
+multiple nested heads. When such composite lambda is applied once, the leftmost/
+outmost head is first eliminated, and the next is then applied. Such method
+of having nested heads is termed <strong>currying</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Currying</p>
+<p>An abstraction such as </p>
+<div>
+<div class="MathJax_Preview">
+    \lambda x y \ldotp x y
+</div>
+<script type="math/tex; mode=display">
+    \lambda x y \ldotp x y
+</script>
+</div>
+<p>Is shorthand for</p>
+<div>
+<div class="MathJax_Preview">
+    \lambda x \ldotp (\lambda y \ldotp x y)
+</div>
+<script type="math/tex; mode=display">
+    \lambda x \ldotp (\lambda y \ldotp x y)
+</script>
+</div>
+<p>When the first argument <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> is applied, <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> is bound and the outer lambda
+is eliminated to become <span><span class="MathJax_Preview">\lambda y \ldotp x y</span><script type="math/tex">\lambda y \ldotp x y</script></span> with some applied <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> value.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Reduction of a multi-argument lambda</p>
+<p>Let</p>
+<div>
+<div class="MathJax_Preview">
+    \lambda x y \ldotp x y
+</div>
+<script type="math/tex; mode=display">
+    \lambda x y \ldotp x y
+</script>
+</div>
+<p>Be applied to <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span> and <span><span class="MathJax_Preview">2</span><script type="math/tex">2</script></span> respectively.</p>
+<p>Then</p>
+<div>
+<div class="MathJax_Preview">
+    \begin{aligned}
+        (\lambda x y \ldotp x y)\ 1\ 2 &amp; \\
+        (\lambda x \ldotp (\lambda y \ldotp x y))\ 1\ 2 &amp; \\
+        [x \coloneq 1] &amp; \\
+        (\lambda y \ldotp 1 y)\ 2 &amp; \\
+        [y \coloneq 2] &amp; \\
+        1\ 2 &amp; \\
+    \end{aligned}
+</div>
+<script type="math/tex; mode=display">
+    \begin{aligned}
+        (\lambda x y \ldotp x y)\ 1\ 2 & \\
+        (\lambda x \ldotp (\lambda y \ldotp x y))\ 1\ 2 & \\
+        [x \coloneq 1] & \\
+        (\lambda y \ldotp 1 y)\ 2 & \\
+        [y \coloneq 2] & \\
+        1\ 2 & \\
+    \end{aligned}
+</script>
+</div>
+</div>
+<h3 id="beta-normal-form">Beta Normal Form<a class="headerlink" href="#beta-normal-form" title="Permanent link">&para;</a></h3>
+<p>A <strong>beta normal form</strong> (BNF) is when some lambda expression cannot be beta
+reduced any further - a fully evaluated expression or program.</p>
+<h3 id="combinator">Combinator<a class="headerlink" href="#combinator" title="Permanent link">&para;</a></h3>
+<p>A <strong>combinator</strong> is a lambda term with <em>no</em> free variables, and only serve to
+<em>combine</em> given arguments.</p>
+<div class="admonition example">
+<p class="admonition-title">Valid combinators</p>
+<ol>
+<li>
+<p><span><span class="MathJax_Preview">\lambda x \ldotp x</span><script type="math/tex">\lambda x \ldotp x</script></span></p>
+<p><span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> is the only variable and is bound.</p>
+</li>
+<li>
+<p><span><span class="MathJax_Preview">\lambda x y \ldotp x</span><script type="math/tex">\lambda x y \ldotp x</script></span></p>
+</li>
+<li>
+<p><span><span class="MathJax_Preview">\lambda x y z \ldotp x z (y z)</span><script type="math/tex">\lambda x y z \ldotp x z (y z)</script></span></p>
+</li>
+</ol>
+</div>
+<div class="admonition exmaple">
+<p class="admonition-title">Not combinators</p>
+<ol>
+<li>
+<p><span><span class="MathJax_Preview">\lambda y \ldotp x</span><script type="math/tex">\lambda y \ldotp x</script></span></p>
+<p><span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> is a free variable.</p>
+</li>
+<li>
+<p><span><span class="MathJax_Preview">\lambda x \ldotp x z</span><script type="math/tex">\lambda x \ldotp x z</script></span></p>
+<p><span><span class="MathJax_Preview">z</span><script type="math/tex">z</script></span> is a free variable.</p>
+</li>
+</ol>
+</div>
+<h3 id="divergence">Divergence<a class="headerlink" href="#divergence" title="Permanent link">&para;</a></h3>
+<p>Some lambda terms do not reduce to a beta normal form because they <strong>diverge</strong>.</p>
+<p><strong>Divergence</strong> refers to the evaluation process never terminates.</p>
+<div class="admonition example">
+<p class="admonition-title">Omega lambda term (diverging)</p>
+<ol>
+<li>
+<p><span><span class="MathJax_Preview">(\lambda x \ldotp x x)(\lambda x \ldotp x x)</span><script type="math/tex">(\lambda x \ldotp x x)(\lambda x \ldotp x x)</script></span></p>
+<p><span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> in first lambda's head becomes second lambda.</p>
+</li>
+<li>
+<p><span><span class="MathJax_Preview">([x \coloneq (\lambda x \ldotp x x)]) x x</span><script type="math/tex">([x \coloneq (\lambda x \ldotp x x)]) x x</script></span></p>
+</li>
+<li>
+<p><span><span class="MathJax_Preview">(\lambda x \ldotp x x)(\lambda x \ldotp x x)</span><script type="math/tex">(\lambda x \ldotp x x)(\lambda x \ldotp x x)</script></span></p>
+<p>Substitution of <span><span class="MathJax_Preview">(\lambda x \ldotp x x)</span><script type="math/tex">(\lambda x \ldotp x x)</script></span> for <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> causes the original 
+lambda to reappear and thus evaluation cannot terminate.</p>
+</li>
+</ol>
 </div>
                 
                   
