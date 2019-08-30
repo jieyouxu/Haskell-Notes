@@ -20,7 +20,7 @@ theme:
     icon: 'book'
   palette:
     primary: 'deep purple'
-    accent: 'indigo'
+    accent: 'pink'
   feature:
     tabs: false
 
