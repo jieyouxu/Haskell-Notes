@@ -220,3 +220,22 @@ The binary arithmetic operators can be partially applied (e.g. `#! (2^)`),
 and this is called **sectioning**.
 
 ## Let and Where
+
+The `#!hs let` keyword is part of a let binding expression, while the
+`#!hs where` keyword is part of a where clause declaration.
+
+Both `#!hs let` and `#!hs where` allows extracting parts of an expression and
+giving them names.
+
+!!! example "Where example"
+    ```haskell
+    printHello name = print greeting
+        where greeting = "Hello " ++ name ++ "!"
+    ```
+
+!!! example "Let example"
+    ```haskell
+    printHello name = 
+        let greeting = "Hello " ++ name ++ "!"
+        in print greeting
+    ```
