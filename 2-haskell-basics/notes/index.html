@@ -1,0 +1,892 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
+    
+    
+      
+        <title>Haskell Basics - Haskell Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.0284f74d.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.01803549.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7e57c2">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="deep-purple" data-md-color-accent="pink">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#haskell-basics" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="Haskell Notes" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">book</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Haskell Notes
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Haskell Basics
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/jieyouxu/haskell-notes/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    Haskell-Notes
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="Haskell Notes" class="md-nav__button md-logo">
+      
+        <i class="md-icon">book</i>
+      
+    </a>
+    Haskell Notes
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/jieyouxu/haskell-notes/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    Haskell-Notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../1-foundation/notes/" title="Foundation" class="md-nav__link">
+      Foundation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Haskell Basics
+      </label>
+    
+    <a href="./" title="Haskell Basics" class="md-nav__link md-nav__link--active">
+      Haskell Basics
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prelude" title="Prelude" class="md-nav__link">
+    Prelude
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-signatures" title="Type Signatures" class="md-nav__link">
+    Type Signatures
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expressions" title="Expressions" class="md-nav__link">
+    Expressions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#declarations" title="Declarations" class="md-nav__link">
+    Declarations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normal-form" title="Normal Form" class="md-nav__link">
+    Normal Form
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" title="Functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-definition" title="Function Definition" class="md-nav__link">
+    Function Definition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluation" title="Evaluation" class="md-nav__link">
+    Evaluation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infix-operators" title="Infix Operators" class="md-nav__link">
+    Infix Operators
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#associativity-and-precedence" title="Associativity and Precedence" class="md-nav__link">
+    Associativity and Precedence
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#value-declaration" title="Value Declaration" class="md-nav__link">
+    Value Declaration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arithmetic-functions" title="Arithmetic Functions" class="md-nav__link">
+    Arithmetic Functions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#negative-numbers" title="Negative Numbers" class="md-nav__link">
+    Negative Numbers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dollar-operator" title="Dollar ($) Operator" class="md-nav__link">
+    Dollar ($) Operator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#let-and-where" title="Let and Where" class="md-nav__link">
+    Let and Where
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prelude" title="Prelude" class="md-nav__link">
+    Prelude
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-signatures" title="Type Signatures" class="md-nav__link">
+    Type Signatures
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expressions" title="Expressions" class="md-nav__link">
+    Expressions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#declarations" title="Declarations" class="md-nav__link">
+    Declarations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normal-form" title="Normal Form" class="md-nav__link">
+    Normal Form
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" title="Functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-definition" title="Function Definition" class="md-nav__link">
+    Function Definition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluation" title="Evaluation" class="md-nav__link">
+    Evaluation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infix-operators" title="Infix Operators" class="md-nav__link">
+    Infix Operators
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#associativity-and-precedence" title="Associativity and Precedence" class="md-nav__link">
+    Associativity and Precedence
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#value-declaration" title="Value Declaration" class="md-nav__link">
+    Value Declaration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arithmetic-functions" title="Arithmetic Functions" class="md-nav__link">
+    Arithmetic Functions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#negative-numbers" title="Negative Numbers" class="md-nav__link">
+    Negative Numbers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dollar-operator" title="Dollar ($) Operator" class="md-nav__link">
+    Dollar ($) Operator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#let-and-where" title="Let and Where" class="md-nav__link">
+    Let and Where
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/jieyouxu/haskell-notes/edit/master/docs/2-haskell-basics/notes.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="haskell-basics">Haskell Basics<a class="headerlink" href="#haskell-basics" title="Permanent link">&para;</a></h1>
+<h2 id="prelude">Prelude<a class="headerlink" href="#prelude" title="Permanent link">&para;</a></h2>
+<p>The <code>Prelude</code> is a collection of standard library functions and typeclasses.
+The Glasgow Haskell Compiler (GHC) has a default <code>Prelude</code>, but one is also able
+to supply a custom <code>Prelude</code> if necessary.</p>
+<h2 id="type-signatures">Type Signatures<a class="headerlink" href="#type-signatures" title="Permanent link">&para;</a></h2>
+<p>The double colon operator <code class="codehilite"><span class="ow">::</span></code> denotes that some identifier "<em>has the
+type</em>". That is, <code class="codehilite"><span class="nf">id</span> <span class="ow">::</span> <span class="kt">TypeName</span></code> denotes that some identifier <code>id</code>
+has the type <code class="codehilite"><span class="kt">TypeName</span></code>.</p>
+<h2 id="expressions">Expressions<a class="headerlink" href="#expressions" title="Permanent link">&para;</a></h2>
+<p>Haskell <strong>expressions</strong> may be:</p>
+<ul>
+<li>Values;</li>
+<li>Combination of values (e.g. arithmetic expressions); and/or</li>
+<li>Functions applied to values.</li>
+</ul>
+<h3 id="declarations">Declarations<a class="headerlink" href="#declarations" title="Permanent link">&para;</a></h3>
+<p>Haskell <strong>declarations</strong> are top-level <em>bindings</em> which assign names to
+expressions, allowing programmers to refer to such expressions by names.</p>
+<h3 id="normal-form">Normal Form<a class="headerlink" href="#normal-form" title="Permanent link">&para;</a></h3>
+<p><em>Expressions</em> are in <strong>normal form</strong> if no further reduction steps may be
+performed (i.e. in <em>irreducible form</em>).</p>
+<div class="admonition example">
+<p class="admonition-title">Normal form</p>
+<p>The expression <code class="codehilite"><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span></code> is <em>not</em> in normal form since it can be reduced
+to <code class="codehilite"><span class="mi">2</span></code>, which is in normal form.</p>
+<p>This is done by applying the addition operator
+<code class="codehilite"><span class="p">(</span><span class="o">+</span><span class="p">)</span> <span class="ow">::</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span> <span class="ow">-&gt;</span> <span class="kt">Int</span></code> to two arguments, two <code class="codehilite"><span class="mi">1</span></code>s.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Redexes</p>
+<p><em>Reducible expressions</em> are also called <strong>redexes</strong>.</p>
+</div>
+<h3 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h3>
+<p>Since Haskell functions follow those of lambda calculus, each function takes
+only one argument. With <strong>currying</strong> — by applying a series of <em>nested</em>
+functions with each taking one argument, the innermost expression can obtain
+the values of multiple arguments.</p>
+<p>Functions allow programmers to name arguments and the purposes of expressions.
+This facilitates code reuse and documentation.</p>
+<h4 id="function-definition">Function Definition<a class="headerlink" href="#function-definition" title="Permanent link">&para;</a></h4>
+<p>A <strong>function definition</strong> consists of:</p>
+<ul>
+<li>Name of function;</li>
+<li>Formal parameters;</li>
+<li>Assignment operator <code class="codehilite"><span class="ow">=</span></code>;</li>
+<li>Body expression.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example function definition</p>
+<p>In the function definition</p>
+<div class="codehilite"><pre><span></span><span class="nf">double</span>   <span class="n">x</span>   <span class="ow">=</span>   <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="c1">-- [1]  [2] [3]   [4]</span>
+</pre></div>
+
+<ul>
+<li>[1] is the function's name;</li>
+<li>[2] is the single parameter's name;</li>
+<li>[3] is the definition operator expressing equality;</li>
+<li>[4] is the body expression.</li>
+</ul>
+</div>
+<h2 id="evaluation">Evaluation<a class="headerlink" href="#evaluation" title="Permanent link">&para;</a></h2>
+<p>When some expression is <em>evaluated</em>, its terms are reduced until the simplest
+irreducible form, i.e. <strong>normal form</strong>.</p>
+<p>Haskell uses <strong>lazy evalution</strong> which avoids evaluation of terms unless it is
+inevitable.</p>
+<p>Haskell does <em>not</em> evaluate everything to normal form by default:</p>
+<ul>
+<li>It evaluates expressions to <strong>weak head normal form</strong> (WHNF) by default.</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Weak head normal form</p>
+<p>For some expression like</p>
+<div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">\</span><span class="n">x</span> <span class="ow">-&gt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="p">))</span> <span class="mi">1</span>
+</pre></div>
+
+<p>Haskell only evaluates to the next intermediate form </p>
+<div class="codehilite"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+<p>Unless the final result <code class="codehilite"><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span></code> must be evaluated.</p>
+</div>
+<h2 id="infix-operators">Infix Operators<a class="headerlink" href="#infix-operators" title="Permanent link">&para;</a></h2>
+<p>By default, functions in Haskell are in <em>prefix</em> syntax.</p>
+<p><strong>Operators</strong> are functions which can be used in the <em>infix</em> style.</p>
+<div class="admonition example">
+<p class="admonition-title">Infix operator</p>
+<p>The arithmetic addition operator <code class="codehilite"><span class="p">(</span><span class="o">+</span><span class="p">)</span></code> is an <em>infix</em> operator.</p>
+<p>It can also be used as a prefix function</p>
+<div class="codehilite"><pre><span></span><span class="p">(</span><span class="o">+</span><span class="p">)</span> <span class="mi">1</span> <span class="mi">2</span>
+</pre></div>
+
+<p>Which is identical to</p>
+<div class="codehilite"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
+</pre></div>
+
+<p>Some functions like <code>div</code> may be used infix by using backticks:</p>
+<div class="codehilite"><pre><span></span><span class="mi">10</span> <span class="p">`</span><span class="n">div</span><span class="p">`</span> <span class="mi">2</span> <span class="o">==</span> <span class="n">div</span> <span class="mi">10</span> <span class="mi">2</span>
+</pre></div>
+
+</div>
+<h3 id="associativity-and-precedence">Associativity and Precedence<a class="headerlink" href="#associativity-and-precedence" title="Permanent link">&para;</a></h3>
+<p>Precendence information on operators may be obtained from GHCi with the 
+<code>:info</code> command. GHCi returns:</p>
+<ul>
+<li>Type information;</li>
+<li>Infix or prefix;</li>
+<li>If infix, then its precedence and associativity;</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title"><code class="codehilite"><span class="kt">:</span><span class="n">info</span> <span class="p">(</span><span class="o">*</span><span class="p">)</span></code></p>
+<p>For the multiplication operator <code class="codehilite"><span class="p">(</span><span class="o">*</span><span class="p">)</span></code> GHCi returns</p>
+<div class="codehilite"><pre><span></span><span class="kr">infixl</span> <span class="mi">7</span> <span class="o">*</span>
+</pre></div>
+
+<ul>
+<li><code class="codehilite"><span class="kr">infixl</span></code> means that the operator <code class="codehilite"><span class="p">(</span><span class="o">*</span><span class="p">)</span></code> is an <em>infix</em> operator
+and is <em>left</em> associative.</li>
+<li><code class="codehilite"><span class="mi">7</span></code> is <code class="codehilite"><span class="p">(</span><span class="o">*</span><span class="p">)</span></code>'s precendece level (between 0-9).</li>
+<li><code class="codehilite"><span class="o">*</span></code> is the operator's name, i.e. multiplication.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Associativity</p>
+<ul>
+<li>Left Associativity</li>
+</ul>
+<p>For some left associative operator like <code class="codehilite"><span class="p">(</span><span class="o">*</span><span class="p">)</span></code>, an expression such as
+<code>1 * 3 * 5</code> is equivalent to <code>(1 * 3) * 5</code> with parentheses denoting
+evaluation order, from left to right.</p>
+<ul>
+<li>Right Associativity</li>
+</ul>
+<p>For some right associative oerator like <code class="codehilite"><span class="p">(</span><span class="o">^</span><span class="p">)</span></code>, an expression such as
+<code>1 ^ 3 ^ 5</code> is equivalent to <code>1 ^ (3 ^ 5)</code>, from right to left.</p>
+</div>
+<h2 id="value-declaration">Value Declaration<a class="headerlink" href="#value-declaration" title="Permanent link">&para;</a></h2>
+<p>In a Haskell source file <code>{filename}.hs</code>,</p>
+<div class="codehilite"><pre><span></span><span class="c1">-- file: arith.hs</span>
+
+<span class="kr">module</span> <span class="nn">Arith</span> <span class="kr">where</span>
+
+<span class="nf">addOne</span> <span class="n">x</span> <span class="ow">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+
+<ul>
+<li><code>fileName.hs</code> declares a module <code>Arith</code>.</li>
+<li>Module name is capitalized and named with <code>PascalCase</code>.</li>
+<li>Function, variable and parameter names use <code>camelCase</code>.</li>
+</ul>
+<h2 id="arithmetic-functions">Arithmetic Functions<a class="headerlink" href="#arithmetic-functions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Name</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="codehilite"><span class="p">(</span><span class="o">+</span><span class="p">)</span></code></td>
+<td>Plus</td>
+<td>Addition</td>
+</tr>
+<tr>
+<td><code class="codehilite"><span class="p">(</span><span class="o">-</span><span class="p">)</span></code></td>
+<td>Minus</td>
+<td>Subtraction</td>
+</tr>
+<tr>
+<td><code class="codehilite"><span class="p">(</span><span class="o">*</span><span class="p">)</span></code></td>
+<td>Asterisk</td>
+<td>Multiplication</td>
+</tr>
+<tr>
+<td><code class="codehilite"><span class="p">(</span><span class="o">/</span><span class="p">)</span></code></td>
+<td>Slash</td>
+<td>Fractional division</td>
+</tr>
+<tr>
+<td><code class="codehilite"><span class="nf">div</span></code></td>
+<td>Divide</td>
+<td>Integral division, round down</td>
+</tr>
+<tr>
+<td><code class="codehilite"><span class="nf">mod</span></code></td>
+<td>Modulo</td>
+<td>Modulo division</td>
+</tr>
+<tr>
+<td><code class="codehilite"><span class="nf">quot</span></code></td>
+<td>Quotient</td>
+<td>Integral division, round towards zero</td>
+</tr>
+<tr>
+<td><code class="codehilite"><span class="nf">rem</span></code></td>
+<td>Remainder</td>
+<td>Remainder after division</td>
+</tr>
+</tbody>
+</table>
+<h3 id="negative-numbers">Negative Numbers<a class="headerlink" href="#negative-numbers" title="Permanent link">&para;</a></h3>
+<p>Because <code class="codehilite"><span class="p">(</span><span class="o">-</span><span class="p">)</span></code> is an operator, negative numbers may need parentheses to
+disambiguate.</p>
+<div class="admonition example">
+<p class="admonition-title">Negative Integer</p>
+<div class="codehilite"><pre><span></span><span class="mi">100</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+
+</div>
+<h2 id="dollar-operator">Dollar ($) Operator<a class="headerlink" href="#dollar-operator" title="Permanent link">&para;</a></h2>
+<p>The <code class="codehilite"><span class="p">(</span><span class="o">$</span><span class="p">)</span></code> operator has the signature</p>
+<div class="codehilite"><pre><span></span><span class="p">(</span><span class="o">$</span><span class="p">)</span> <span class="ow">::</span> <span class="p">(</span><span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">b</span>
+<span class="nf">f</span> <span class="o">$</span> <span class="n">a</span> <span class="ow">=</span> <span class="n">f</span> <span class="n">a</span>
+</pre></div>
+
+<p>GHCi gives <code class="codehilite"><span class="kr">infixr</span> <span class="mi">0</span> <span class="o">$</span></code> upon using the <code class="codehilite"><span class="kt">:</span><span class="n">info</span></code> command. It is right
+associative, and of the lowest possible precedence. </p>
+<p>This operator helps to reduce the number of parentheses:</p>
+<div class="codehilite"><pre><span></span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="p">)</span> <span class="o">$</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
+</pre></div>
+
+<p>The binary arithmetic operators can be partially applied (e.g. <code>(2^)</code>),
+and this is called <strong>sectioning</strong>.</p>
+<h2 id="let-and-where">Let and Where<a class="headerlink" href="#let-and-where" title="Permanent link">&para;</a></h2>
+<p>The <code class="codehilite"><span class="kr">let</span></code> keyword is part of a let binding expression, while the
+<code class="codehilite"><span class="kr">where</span></code> keyword is part of a where clause declaration.</p>
+<p>Both <code class="codehilite"><span class="kr">let</span></code> and <code class="codehilite"><span class="kr">where</span></code> allows extracting parts of an expression and
+giving them names.</p>
+<div class="admonition example">
+<p class="admonition-title">Where example</p>
+<div class="codehilite"><pre><span></span><span class="nf">printHello</span> <span class="n">name</span> <span class="ow">=</span> <span class="n">print</span> <span class="n">greeting</span>
+    <span class="kr">where</span> <span class="n">greeting</span> <span class="ow">=</span> <span class="s">&quot;Hello &quot;</span> <span class="o">++</span> <span class="n">name</span> <span class="o">++</span> <span class="s">&quot;!&quot;</span>
+</pre></div>
+
+</div>
+<div class="admonition example">
+<p class="admonition-title">Let example</p>
+<div class="codehilite"><pre><span></span><span class="nf">printHello</span> <span class="n">name</span> <span class="ow">=</span> 
+    <span class="kr">let</span> <span class="n">greeting</span> <span class="ow">=</span> <span class="s">&quot;Hello &quot;</span> <span class="o">++</span> <span class="n">name</span> <span class="o">++</span> <span class="s">&quot;!&quot;</span>
+    <span class="kr">in</span> <span class="n">print</span> <span class="n">greeting</span>
+</pre></div>
+
+</div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../1-foundation/notes/" title="Foundation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Foundation
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.245445c6.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
