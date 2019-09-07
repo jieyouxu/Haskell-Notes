@@ -9,6 +9,7 @@ repo_url: 'https://github.com/jieyouxu/haskell-notes'
 nav:
   - Home: index.md
   - Foundation: 1-foundation/notes.md
+  - Haskell Basics: 2-haskell-basics/notes.md
 
 # Theme
 theme:
