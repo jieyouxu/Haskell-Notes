@@ -10,6 +10,7 @@ nav:
   - Home: index.md
   - Foundation: 1-foundation/notes.md
   - Haskell Basics: 2-haskell-basics/notes.md
+  - Strings: 3-strings/notes.md
 
 # Theme
 theme:
