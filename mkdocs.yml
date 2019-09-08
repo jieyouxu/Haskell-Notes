@@ -13,6 +13,7 @@ nav:
   - Strings: 3-strings/notes.md
   - Basic Datatypes: 4-basic-datatypes/notes.md
   - Types: 5-types/notes.md
+  - Typeclasses: 6-typeclasses/notes.md
 
 # Theme
 theme:
