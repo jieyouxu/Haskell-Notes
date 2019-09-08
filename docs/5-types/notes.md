@@ -152,4 +152,3 @@ system.
 
 - Haskell tries to infer the most polymorphic / general type possible while
 ensuring correctness.
-- 
