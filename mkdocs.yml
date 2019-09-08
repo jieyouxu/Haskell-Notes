@@ -11,6 +11,7 @@ nav:
   - Foundation: 1-foundation/notes.md
   - Haskell Basics: 2-haskell-basics/notes.md
   - Strings: 3-strings/notes.md
+  - Basic Datatypes: 4-basic-datatypes/notes.md
 
 # Theme
 theme:
