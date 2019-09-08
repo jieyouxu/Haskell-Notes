@@ -149,6 +149,12 @@ A 2-tuple's datatype declaration is given by:
 (,) :: a -> b -> (a, b)
 ```
 
+And also
+
+```haskell
+data (,) a b = (,) a b
+```
+
 Convience functions, namely `#!hs fst` and `#!hs snd` allows easy extraction of
 the first and second values out of the tuple respectively.
 

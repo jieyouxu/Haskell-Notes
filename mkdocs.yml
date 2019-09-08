@@ -12,6 +12,7 @@ nav:
   - Haskell Basics: 2-haskell-basics/notes.md
   - Strings: 3-strings/notes.md
   - Basic Datatypes: 4-basic-datatypes/notes.md
+  - Types: 5-types/notes.md
 
 # Theme
 theme:
