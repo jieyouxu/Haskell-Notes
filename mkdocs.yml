@@ -25,8 +25,8 @@ theme:
   font:
     text: 'Roboto'
     code: 'Roboto Mono'
-  logo: 
-    icon: 'book'
+  logo: 'images/favicon.ico'
+  favicon: 'images/favicon.ico'
   palette:
     primary: 'deep purple'
     accent: 'pink'
