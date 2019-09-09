@@ -615,3 +615,9 @@ Which simplies to:
         ((lambda (x) (x x))
             (lambda (x) (f (lambda (y) ((x x) y)))))))
 ```
+
+And so the factorial function can be defined as:
+
+```scheme
+(define factorial (Y almost-factorial))
+```
