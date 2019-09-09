@@ -58,4 +58,18 @@ functions in lambda calculus.
 
     With only one slight caveat – negative integers are not handled.
 
+## Bottom
+
+$\bot$ or **bottom** refers to computations that either failed to successfully
+complete or do not terminate; it corresponds to false in logic.
+
+Partial functions also may return bottom.
+
+To avoid throwing exceptions and bottom values, the `#!hs Maybe` datatype
+comes in useful.
+
+```haskell
+data Maybe a = Nothing | Just a
+```
+
 ==To understand recursion scroll to the top of this page.==
