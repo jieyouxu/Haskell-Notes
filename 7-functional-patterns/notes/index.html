@@ -483,18 +483,18 @@
 higher order functions.</p>
 <div class="admonition example">
 <p class="admonition-title">Anonymous function as argument</p>
-<div class="codehilite"><pre><span></span><span class="nf">addOneToAll</span> <span class="ow">::</span> <span class="kt">Integer</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="kt">Integer</span><span class="p">]</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="kt">Integer</span><span class="p">]</span>
-<span class="nf">addOneToAll</span> <span class="n">value</span> <span class="n">xs</span> <span class="ow">=</span> <span class="n">map</span> <span class="p">(</span><span class="nf">\</span><span class="n">x</span> <span class="ow">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="n">value</span><span class="p">)</span> <span class="n">xs</span>
+<div class="codehilite"><pre><span></span><span class="nf">addEach</span> <span class="ow">::</span> <span class="kt">Integer</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="kt">Integer</span><span class="p">]</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="kt">Integer</span><span class="p">]</span>
+<span class="nf">addEach</span> <span class="n">value</span> <span class="n">xs</span> <span class="ow">=</span> <span class="n">map</span> <span class="p">(</span><span class="nf">\</span><span class="n">x</span> <span class="ow">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="n">value</span><span class="p">)</span> <span class="n">xs</span>
 
 <span class="c1">-- or equivalently using sectioning</span>
 
-<span class="nf">addOneToAll&#39;</span> <span class="ow">::</span> <span class="kt">Integer</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="kt">Integer</span><span class="p">]</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="kt">Integer</span><span class="p">]</span>
-<span class="nf">addOneToAll&#39;</span> <span class="n">value</span> <span class="n">xs</span> <span class="ow">=</span> <span class="n">map</span> <span class="p">(</span><span class="o">+</span> <span class="n">value</span><span class="p">)</span> <span class="n">xs</span>
+<span class="nf">addEach&#39;</span> <span class="ow">::</span> <span class="kt">Integer</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="kt">Integer</span><span class="p">]</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="kt">Integer</span><span class="p">]</span>
+<span class="nf">addEach&#39;</span> <span class="n">value</span> <span class="n">xs</span> <span class="ow">=</span> <span class="n">map</span> <span class="p">(</span><span class="o">+</span> <span class="n">value</span><span class="p">)</span> <span class="n">xs</span>
 
 <span class="c1">-- since xs is simply passed on to map</span>
 
-<span class="nf">addOneToAll&#39;&#39;</span> <span class="ow">::</span> <span class="kt">Integer</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="kt">Integer</span><span class="p">]</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="kt">Integer</span><span class="p">]</span>
-<span class="nf">addOneToAll&#39;&#39;</span> <span class="n">value</span> <span class="ow">=</span> <span class="n">map</span> <span class="p">(</span><span class="o">+</span> <span class="n">value</span><span class="p">)</span>
+<span class="nf">addEach&#39;&#39;</span> <span class="ow">::</span> <span class="kt">Integer</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="kt">Integer</span><span class="p">]</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="kt">Integer</span><span class="p">]</span>
+<span class="nf">addEach&#39;&#39;</span> <span class="n">value</span> <span class="ow">=</span> <span class="n">map</span> <span class="p">(</span><span class="o">+</span> <span class="n">value</span><span class="p">)</span>
 </pre></div>
 
 </div>
