@@ -621,3 +621,16 @@ And so the factorial function can be defined as:
 ```scheme
 (define factorial (Y almost-factorial))
 ```
+
+An implementation of applicative-order Y-combinator in JavaScript is:
+
+```javascript
+const Y = f => (x => x(x))(y => f(x => y(y)(x)));
+
+const factorial = Y(
+    self => n => {
+        if (n == 0) return 1;
+        else return n * self(n - 1);
+    }
+);
+```
