@@ -7,13 +7,14 @@ repo_url: 'https://github.com/jieyouxu/Haskell-Notes'
 
 # Navigation order
 nav:
-  - Home: index.md
-  - Foundation: 1-foundation/notes.md
-  - Haskell Basics: 2-haskell-basics/notes.md
-  - Strings: 3-strings/notes.md
-  - Basic Datatypes: 4-basic-datatypes/notes.md
-  - Types: 5-types/notes.md
-  - Typeclasses: 6-typeclasses/notes.md
+  - 'Home': 'index.md'
+  - 'Foundation': '1-foundation/notes.md'
+  - 'Haskell Basics': '2-haskell-basics/notes.md'
+  - 'Strings': '3-strings/notes.md'
+  - 'Basic Datatypes': '4-basic-datatypes/notes.md'
+  - 'Types': '5-types/notes.md'
+  - 'Typeclasses': '6-typeclasses/notes.md'
+  - 'Functional Patterns': '7-functional-patterns/notes.md'
 
 # Theme
 theme:
