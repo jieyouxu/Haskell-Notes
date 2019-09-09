@@ -20,7 +20,17 @@ higher order functions.
 !!! example "Anonymous function as argument"
     ```haskell
     addOneToAll :: Integer -> [Integer] -> [Integer]
-    addOneToAll value xs = map (\x -> x + value) xs 
+    addOneToAll value xs = map (\x -> x + value) xs
+
+    -- or equivalently using sectioning
+
+    addOneToAll' :: Integer -> [Integer] -> [Integer]
+    addOneToAll' value xs = map (+ value) xs
+
+    -- since xs is simply passed on to map
+
+    addOneToAll'' :: Integer -> [Integer] -> [Integer]
+    addOneToAll'' value = map (+ value)
     ```
 
 ## Pattern Matching
