@@ -267,7 +267,7 @@ Expanded, it looks like
             ))))
 ```
 
-Now to get it working for all $n \in \mathbb{z}$, we need to repeat the chain
+Now to get it working for all $n \in \mathbb{Z}$, we need to repeat the chain
 of `#!scheme almost-factorial` an infinite number of times; 
 `#!scheme factorial-infinity` is the factorial function we are looking for.
 
