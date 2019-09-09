@@ -351,6 +351,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#bottom" title="Bottom" class="md-nav__link">
+    Bottom
+  </a>
+  
+</li>
+      
       
       
       
@@ -397,6 +404,13 @@
         <li class="md-nav__item">
   <a href="#factorial" title="Factorial" class="md-nav__link">
     Factorial
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bottom" title="Bottom" class="md-nav__link">
+    Bottom
   </a>
   
 </li>
@@ -468,6 +482,15 @@ and no more calls to itself will be made.</p>
 
 <p>With only one slight caveat – negative integers are not handled.</p>
 </div>
+<h2 id="bottom">Bottom<a class="headerlink" href="#bottom" title="Permanent link">&para;</a></h2>
+<p><span><span class="MathJax_Preview">\bot</span><script type="math/tex">\bot</script></span> or <strong>bottom</strong> refers to computations that either failed to successfully
+complete or do not terminate; it corresponds to false in logic.</p>
+<p>Partial functions also may return bottom.</p>
+<p>To avoid throwing exceptions and bottom values, the <code class="codehilite"><span class="kt">Maybe</span></code> datatype
+comes in useful.</p>
+<div class="codehilite"><pre><span></span><span class="kr">data</span> <span class="kt">Maybe</span> <span class="n">a</span> <span class="ow">=</span> <span class="kt">Nothing</span> <span class="o">|</span> <span class="kt">Just</span> <span class="n">a</span>
+</pre></div>
+
 <p><mark>To understand recursion scroll to the top of this page.</mark></p>
                 
                   
