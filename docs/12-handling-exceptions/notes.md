@@ -5,5 +5,5 @@
     and not `Exception`s in languages like Java.
 
 !!! note "Exceptions and control flow"
-    Exceptions in languages like Java have the problem of interfering with
-    control flow and causes the Exception to propagate.
+    `Exception`s in languages like Java have the problem of interfering with
+    control flow and causes the `Exception` to propagate.
