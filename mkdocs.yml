@@ -17,6 +17,7 @@ nav:
   - 'Functional Patterns': '7-functional-patterns/notes.md'
   - 'Recursion': '8-recursion/notes.md'
   - 'Lists': '9-lists/notes.md'
+  - 'List Folding': '10-folding-lists/notes.md'
   - 'Y Combinator': 'misc/y-combinator.md'
 
 # Theme
