@@ -18,6 +18,7 @@ nav:
   - 'Recursion': '8-recursion/notes.md'
   - 'Lists': '9-lists/notes.md'
   - 'List Folding': '10-folding-lists/notes.md'
+  - 'Algebraic Datatypes': '11-algebraic-datatypes/notes.md'
   - 'Y Combinator': 'misc/y-combinator.md'
 
 # Theme
