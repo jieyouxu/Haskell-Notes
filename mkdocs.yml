@@ -20,6 +20,7 @@ nav:
   - 'List Folding': '10-folding-lists/notes.md'
   - 'Algebraic Datatypes': '11-algebraic-datatypes/notes.md'
   - 'Handling Exceptions': '12-handling-exceptions/notes.md'
+  - 'Building Projects': '13-building-projects/notes.md'
   - 'Y Combinator': 'misc/y-combinator.md'
 
 # Theme
