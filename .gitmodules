@@ -1,0 +1,3 @@
+[submodule "docs/13-building-projects/hello"]
+	path = docs/13-building-projects/hello
+	url = https://github.com/haskellbook/hello.git
