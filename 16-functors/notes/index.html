@@ -36,7 +36,7 @@
     
     
       
-        <title>Recursion - Haskell Notes</title>
+        <title>Functors - Haskell Notes</title>
       
     
     
@@ -85,7 +85,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#recursion" tabindex="1" class="md-skip">
+      <a href="#functors" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -111,7 +111,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Recursion
+                Functors
               
             </span>
           
@@ -316,56 +316,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Recursion
-      </label>
-    
-    <a href="./" title="Recursion" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../8-recursion/notes/" title="Recursion" class="md-nav__link">
       Recursion
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#factorial" title="Factorial" class="md-nav__link">
-    Factorial
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bottom" title="Bottom" class="md-nav__link">
-    Bottom
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
     
@@ -445,11 +400,70 @@
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../16-functors/notes/" title="Functors" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Functors
+      </label>
+    
+    <a href="./" title="Functors" class="md-nav__link md-nav__link--active">
       Functors
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basics" title="Basics" class="md-nav__link">
+    Basics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identities" title="Identities" class="md-nav__link">
+    Identities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structure-preservation" title="Structure Preservation" class="md-nav__link">
+    Structure Preservation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uniqueness-to-datatype" title="Uniqueness to Datatype" class="md-nav__link">
+    Uniqueness to Datatype
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
     
@@ -486,15 +500,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#factorial" title="Factorial" class="md-nav__link">
-    Factorial
+  <a href="#basics" title="Basics" class="md-nav__link">
+    Basics
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bottom" title="Bottom" class="md-nav__link">
-    Bottom
+  <a href="#identities" title="Identities" class="md-nav__link">
+    Identities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structure-preservation" title="Structure Preservation" class="md-nav__link">
+    Structure Preservation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uniqueness-to-datatype" title="Uniqueness to Datatype" class="md-nav__link">
+    Uniqueness to Datatype
   </a>
   
 </li>
@@ -515,67 +543,58 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/jieyouxu/Haskell-Notes/edit/master/docs/8-recursion/notes.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/jieyouxu/Haskell-Notes/edit/master/docs/16-functors/notes.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="recursion">Recursion<a class="headerlink" href="#recursion" title="Permanent link">&para;</a></h1>
-<p><mark>To understand recursion scroll to the bottom of this page.</mark></p>
-<p>Recursion refers to defining a function with regard to itself using
-self-referential expressions – the function will keep on calling itself unless
-some condition is reached, or else it never terminates (theoretically).</p>
-<p>Lambda calculus do <em>not</em> have recursion since expressions are nameless and so
-cannot be called. But to achieve Turing completeness, one needs to be able to
-write recursive functions.</p>
-<p>The <em>Y combinator</em> or <em>fixed-point combinator</em> is used to write recursive
-functions in lambda calculus.</p>
-<h2 id="factorial">Factorial<a class="headerlink" href="#factorial" title="Permanent link">&para;</a></h2>
-<div class="admonition example">
-<p class="admonition-title">Broken Factorial</p>
-<p>A naïve implementation of the factorial function may be:</p>
-<div class="codehilite"><pre><span></span><span class="nf">brokenFactorial</span> <span class="ow">::</span> <span class="kt">Integer</span> <span class="ow">-&gt;</span> <span class="kt">Integer</span>
-<span class="nf">brokenFactorial</span> <span class="n">n</span> <span class="ow">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">brokenFactorial</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+                <h1 id="functors">Functors<a class="headerlink" href="#functors" title="Permanent link">&para;</a></h1>
+<p>The <code class="codehilite"><span class="kt">Functor</span></code> typeclass is about abstracting mapping over structures.</p>
+<details class="example"><summary>Negation</summary><p>Logical <em>negation</em> (<span><span class="MathJax_Preview">\neg</span><script type="math/tex">\neg</script></span>) can be considered a <code class="codehilite"><span class="kt">Functor</span></code> since when
+<span><span class="MathJax_Preview">\neg</span><script type="math/tex">\neg</script></span> is applied to some input sentence <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>, it outputs <span><span class="MathJax_Preview">\neg A</span><script type="math/tex">\neg A</script></span>; the
+concept of negation is <em>lifted</em> over the entire sentence and does not change
+the internal structure — here, the terms within the sentence <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> remains
+unchanged and the negation operator is applied to the entire sentence.</p>
+</details>
+<h2 id="basics">Basics<a class="headerlink" href="#basics" title="Permanent link">&para;</a></h2>
+<p>A <code class="codehilite"><span class="kt">Functor</span></code> is an abstraction for applying a function to values within
+some structure without altering the structure itself.</p>
+<div class="codehilite"><pre><span></span><span class="kr">class</span> <span class="kt">Functor</span> <span class="n">f</span> <span class="kr">where</span>
+    <span class="n">fmap</span> <span class="ow">::</span> <span class="p">(</span><span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="n">b</span>
 </pre></div>
 
-<p>But trying to apply this function to any integer never terminates...</p>
-<div class="codehilite"><pre><span></span><span class="nf">brokenFactorial</span> <span class="mi">3</span> <span class="ow">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="o">...</span>
+<p><code class="codehilite"><span class="nf">fmap</span></code> is aliased with the infix operator <code class="codehilite"><span class="o">&lt;$&gt;</span></code>.</p>
+<div class="codehilite"><pre><span></span><span class="o">&lt;$&gt;</span> <span class="ow">::</span> <span class="kt">Functor</span> <span class="n">f</span> <span class="ow">=&gt;</span> <span class="p">(</span><span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="n">b</span>
 </pre></div>
 
-<p>Because this implementation has <em>No Base Case™</em>.</p>
-</div>
-<div class="admonition example">
-<p class="admonition-title">Better Factorial</p>
-<p>A better implementation for factorial may be:</p>
-<div class="codehilite"><pre><span></span><span class="nf">factorial</span> <span class="ow">::</span> <span class="kt">Integer</span> <span class="ow">-&gt;</span> <span class="kt">Integer</span>
-<span class="nf">factorial</span> <span class="mi">0</span> <span class="ow">=</span> <span class="mi">1</span>
-<span class="nf">factorial</span> <span class="n">n</span> <span class="ow">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<details class="note"><summary>Explicit kind signatures</summary><p>It is possible to give explicit type signatures, for example:</p>
+<div class="codehilite"><pre><span></span><span class="kr">class</span> <span class="kt">Functor</span> <span class="p">(</span><span class="n">f</span> <span class="ow">::</span> <span class="o">*</span> <span class="ow">-&gt;</span> <span class="o">*</span><span class="p">)</span> <span class="kr">where</span>
+    <span class="n">fmap</span> <span class="ow">::</span> <span class="p">(</span><span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="n">b</span>
 </pre></div>
 
-<p>Which will terminate because eventually the base case will be reached
-and no more calls to itself will be made.</p>
-<div class="codehilite"><pre><span></span><span class="nf">factorial</span> <span class="mi">3</span>     <span class="ow">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">factorial</span> <span class="mi">2</span><span class="p">)</span>
-                <span class="ow">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">factorial</span> <span class="mi">1</span><span class="p">))</span>
-                <span class="ow">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">factorial</span> <span class="mi">0</span><span class="p">)))</span>
-                <span class="ow">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
-                <span class="ow">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="mi">1</span><span class="p">))</span>
-                <span class="ow">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-                <span class="ow">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>
-                <span class="ow">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-                <span class="ow">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span>
-                <span class="ow">=</span> <span class="mi">6</span>
+</details>
+<h2 id="identities">Identities<a class="headerlink" href="#identities" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Identity</strong></p>
+<div class="codehilite"><pre><span></span><span class="nf">fmap</span> <span class="n">id</span> <span class="o">==</span> <span class="n">id</span>
 </pre></div>
 
-<p>With only one slight caveat – negative integers are not handled.</p>
-</div>
-<h2 id="bottom">Bottom<a class="headerlink" href="#bottom" title="Permanent link">&para;</a></h2>
-<p><span><span class="MathJax_Preview">\bot</span><script type="math/tex">\bot</script></span> or <strong>bottom</strong> refers to computations that either failed to successfully
-complete or do not terminate; it corresponds to false in logic.</p>
-<p>Partial functions also may return bottom.</p>
-<p>To avoid throwing exceptions and bottom values, the <code class="codehilite"><span class="kt">Maybe</span></code> datatype
-comes in useful.</p>
-<div class="codehilite"><pre><span></span><span class="kr">data</span> <span class="kt">Maybe</span> <span class="n">a</span> <span class="ow">=</span> <span class="kt">Nothing</span> <span class="o">|</span> <span class="kt">Just</span> <span class="n">a</span>
+</li>
+<li>
+<p><strong>Composition</strong></p>
+<div class="codehilite"><pre><span></span><span class="nf">fmap</span> <span class="p">(</span><span class="n">f</span><span class="o">.</span> <span class="n">g</span><span class="p">)</span> <span class="o">==</span> <span class="n">fmap</span> <span class="n">f</span> <span class="o">.</span> <span class="n">fmap</span> <span class="n">g</span>
 </pre></div>
 
-<p><mark>To understand recursion scroll to the top of this page.</mark></p>
+</li>
+</ol>
+<h2 id="structure-preservation">Structure Preservation<a class="headerlink" href="#structure-preservation" title="Permanent link">&para;</a></h2>
+<p>The two identities guarantee that <code class="codehilite"><span class="kt">Functor</span></code>s shall be structure-preserving.</p>
+<p>In the sigature of <code class="codehilite"><span class="nf">fmap</span> <span class="ow">::</span> <span class="kt">Functor</span> <span class="n">f</span> <span class="ow">=&gt;</span> <span class="p">(</span><span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="n">b</span></code>, since the
+input structure <code class="codehilite"><span class="nf">f</span></code> is identical to the output structure <code class="codehilite"><span class="nf">f</span></code>, then it
+can be deduced that <code class="codehilite"><span class="nf">fmap</span></code> does not alter the underlying structure.</p>
+<h2 id="uniqueness-to-datatype">Uniqueness to Datatype<a class="headerlink" href="#uniqueness-to-datatype" title="Permanent link">&para;</a></h2>
+<p><code class="codehilite"><span class="kt">Functor</span></code> instances will be unique for its datatype because of the
+parametricity in the type arguments, requiring the structure <code class="codehilite"><span class="nf">f</span></code> in\
+<code class="codehilite"><span class="kt">Functor</span> <span class="n">f</span></code> to have precisely the kind <code class="codehilite"><span class="nf">f</span> <span class="ow">::</span> <span class="o">*</span> <span class="ow">-&gt;</span> <span class="o">*</span></code>.</p>
                 
                   
                 
@@ -596,7 +615,7 @@ comes in useful.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../7-functional-patterns/notes/" title="Functional Patterns" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../15-monoids-semigroups/notes/" title="Monoids, Semigroups" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -605,19 +624,19 @@ comes in useful.</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Functional Patterns
+                Monoids, Semigroups
               </span>
             </div>
           </a>
         
         
-          <a href="../../9-lists/notes/" title="Lists" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../misc/y-combinator/" title="Y Combinator" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Lists
+                Y Combinator
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
