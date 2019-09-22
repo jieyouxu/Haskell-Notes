@@ -22,6 +22,7 @@ nav:
   - 'Handling Exceptions': '12-handling-exceptions/notes.md'
   - 'Building Projects': '13-building-projects/notes.md'
   - 'Monoids, Semigroups': '15-monoids-semigroups/notes.md'
+  - 'Functors': '16-functors/notes.md'
   - 'Y Combinator': 'misc/y-combinator.md'
 
 # Theme
