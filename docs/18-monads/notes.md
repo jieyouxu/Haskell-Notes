@@ -38,7 +38,7 @@ join :: Monad m => m (m a) -> m a
     fmap f xs = xs >>= return . f
     ```
 
-!!! note "Misconcepts regarding `#!hs Monad`"
+??? note "Misconcepts regarding `#!hs Monad`"
     - `#!hs Monad`s are *pure*.
     - `#!hs Monad`s are not imperative, since commutative `#!hs Monad`s do not
     need to order actions (useful property for concurrency!).
