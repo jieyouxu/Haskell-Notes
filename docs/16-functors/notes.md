@@ -33,7 +33,7 @@ class Functor f where
         fmap :: (a -> b) -> f a -> f b
     ```
 
-## Identities
+## Functor Laws
 
 1. **Identity**
 

@@ -69,7 +69,7 @@ The ambiguity is resolved by having wrapper types `#!hs Sum` and `#!hs Product`
 to wrap numerical values and consequently identify which `#!hs Monoid` instance
 is desired.
 
-### Identities
+### Monoid Laws
 
 Any `#!hs Monoid` instance *must* abide by these identities, which are 
 particularily useful for testing.
@@ -214,7 +214,7 @@ Note that `#!hs (<>) :: Semigroup m => m -> m -> m` in the case of
         mempty :: m
     ```
 
-### Identity
+### Semigroup Laws
 
 The removal of the identity requirement means that only the associativity 
 identity is left.
