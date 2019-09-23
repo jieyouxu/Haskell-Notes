@@ -600,16 +600,14 @@ can be defined via <code class="codehilite"><span class="kt">Monad</span></code>
 </pre></div>
 
 </details>
-<div class="admonition note">
-<p class="admonition-title">Misconcepts regarding <code class="codehilite"><span class="kt">Monad</span></code></p>
-<ul>
+<details class="note"><summary>Misconcepts regarding <code class="codehilite"><span class="kt">Monad</span></code></summary><ul>
 <li><code class="codehilite"><span class="kt">Monad</span></code>s are <em>pure</em>.</li>
 <li><code class="codehilite"><span class="kt">Monad</span></code>s are not imperative, since commutative <code class="codehilite"><span class="kt">Monad</span></code>s do not
 need to order actions (useful property for concurrency!).</li>
 <li><code class="codehilite"><span class="kt">Monad</span></code>s are not values.</li>
 <li><code class="codehilite"><span class="kt">Monad</span></code>s are not about strict vs lazy.</li>
 </ul>
-</div>
+</details>
 <h2 id="lifting">Lifting<a class="headerlink" href="#lifting" title="Permanent link">&para;</a></h2>
 <p><code class="codehilite"><span class="kt">Monad</span></code>s also have corresponding <code class="codehilite"><span class="nf">lift</span></code> functions, just like those
 of <code class="codehilite"><span class="kt">Applicative</span></code>s.</p>
