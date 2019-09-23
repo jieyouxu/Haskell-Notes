@@ -24,6 +24,7 @@ nav:
   - 'Monoids, Semigroups': '15-monoids-semigroups/notes.md'
   - 'Functors': '16-functors/notes.md'
   - 'Applicatives': '17-applicatives/notes.md'
+  - 'Monads': '18-monads/notes.md'
   - 'Y Combinator': 'misc/y-combinator.md'
 
 # Theme
