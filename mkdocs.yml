@@ -25,6 +25,7 @@ nav:
   - 'Functors': '16-functors/notes.md'
   - 'Applicatives': '17-applicatives/notes.md'
   - 'Monads': '18-monads/notes.md'
+  - 'Foldable': '20-foldable/notes.md'
   - 'Y Combinator': 'misc/y-combinator.md'
 
 # Theme
