@@ -1,0 +1,848 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
+    
+    
+      
+        <title>Traversable - Haskell Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.0284f74d.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.01803549.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7e57c2">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="deep-purple" data-md-color-accent="pink">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#traversable" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="Haskell Notes" class="md-header-nav__button md-logo">
+          
+            <img src="../../images/favicon.ico" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Haskell Notes
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Traversable
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/jieyouxu/Haskell-Notes/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    jieyouxu/Haskell-Notes
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="Haskell Notes" class="md-nav__button md-logo">
+      
+        <img src="../../images/favicon.ico" width="48" height="48">
+      
+    </a>
+    Haskell Notes
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/jieyouxu/Haskell-Notes/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    jieyouxu/Haskell-Notes
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../1-foundation/notes/" title="Foundation" class="md-nav__link">
+      Foundation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../2-haskell-basics/notes/" title="Haskell Basics" class="md-nav__link">
+      Haskell Basics
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../3-strings/notes/" title="Strings" class="md-nav__link">
+      Strings
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../4-basic-datatypes/notes/" title="Basic Datatypes" class="md-nav__link">
+      Basic Datatypes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../5-types/notes/" title="Types" class="md-nav__link">
+      Types
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../6-typeclasses/notes/" title="Typeclasses" class="md-nav__link">
+      Typeclasses
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../7-functional-patterns/notes/" title="Functional Patterns" class="md-nav__link">
+      Functional Patterns
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../8-recursion/notes/" title="Recursion" class="md-nav__link">
+      Recursion
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../9-lists/notes/" title="Lists" class="md-nav__link">
+      Lists
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../10-folding-lists/notes/" title="List Folding" class="md-nav__link">
+      List Folding
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../11-algebraic-datatypes/notes/" title="Algebraic Datatypes" class="md-nav__link">
+      Algebraic Datatypes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../12-handling-exceptions/notes/" title="Handling Exceptions" class="md-nav__link">
+      Handling Exceptions
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../13-building-projects/notes/" title="Building Projects" class="md-nav__link">
+      Building Projects
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../15-monoids-semigroups/notes/" title="Monoids, Semigroups" class="md-nav__link">
+      Monoids, Semigroups
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../16-functors/notes/" title="Functors" class="md-nav__link">
+      Functors
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../17-applicatives/notes/" title="Applicatives" class="md-nav__link">
+      Applicatives
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../18-monads/notes/" title="Monads" class="md-nav__link">
+      Monads
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../20-foldable/notes/" title="Foldable" class="md-nav__link">
+      Foldable
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Traversable
+      </label>
+    
+    <a href="./" title="Traversable" class="md-nav__link md-nav__link--active">
+      Traversable
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sequencea" title="SequenceA" class="md-nav__link">
+    SequenceA
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traverse" title="Traverse" class="md-nav__link">
+    Traverse
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapm-and-traverse-sequence-and-sequencea" title="MapM and Traverse, Sequence and SequenceA" class="md-nav__link">
+    MapM and Traverse, Sequence and SequenceA
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-case" title="Use Case" class="md-nav__link">
+    Use Case
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traversable-laws" title="Traversable Laws" class="md-nav__link">
+    Traversable Laws
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traverse_1" title="traverse" class="md-nav__link">
+    traverse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequencea_1" title="sequenceA" class="md-nav__link">
+    sequenceA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../misc/y-combinator/" title="Y Combinator" class="md-nav__link">
+      Y Combinator
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sequencea" title="SequenceA" class="md-nav__link">
+    SequenceA
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traverse" title="Traverse" class="md-nav__link">
+    Traverse
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapm-and-traverse-sequence-and-sequencea" title="MapM and Traverse, Sequence and SequenceA" class="md-nav__link">
+    MapM and Traverse, Sequence and SequenceA
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-case" title="Use Case" class="md-nav__link">
+    Use Case
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traversable-laws" title="Traversable Laws" class="md-nav__link">
+    Traversable Laws
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traverse_1" title="traverse" class="md-nav__link">
+    traverse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequencea_1" title="sequenceA" class="md-nav__link">
+    sequenceA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/jieyouxu/Haskell-Notes/edit/master/docs/21-traversable/notes.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="traversable">Traversable<a class="headerlink" href="#traversable" title="Permanent link">&para;</a></h1>
+<p>The <code class="codehilite"><span class="kt">Traversable</span></code> typeclass defined in <code class="codehilite"><span class="kt">Data</span><span class="o">.</span><span class="kt">Traversable</span></code> is given as</p>
+<div class="codehilite"><pre><span></span><span class="kr">class</span> <span class="p">(</span><span class="kt">Functor</span> <span class="n">t</span><span class="p">,</span> <span class="kt">Foldable</span> <span class="n">t</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="kt">Traversable</span> <span class="n">t</span> <span class="kr">where</span>
+    <span class="cm">{-# MINIMAL traverse | sequenceA #-}</span>
+    <span class="n">traverse</span> <span class="ow">::</span> <span class="kt">Applicative</span> <span class="n">f</span> <span class="ow">=&gt;</span> <span class="p">(</span><span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="n">b</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="n">t</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="p">(</span><span class="n">t</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">traverse</span> <span class="n">f</span> <span class="ow">=</span> <span class="n">sequenceA</span> <span class="o">.</span> <span class="n">fmap</span> <span class="n">f</span>
+
+    <span class="n">sequenceA</span> <span class="ow">::</span> <span class="kt">Applicative</span> <span class="n">f</span> <span class="ow">=&gt;</span> <span class="n">t</span> <span class="p">(</span><span class="n">f</span> <span class="n">a</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="p">(</span><span class="n">t</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">sequenceA</span> <span class="ow">=</span> <span class="n">traverse</span> <span class="n">id</span>
+</pre></div>
+
+<p>The <code class="codehilite"><span class="nf">traverse</span></code> operation:</p>
+<ol>
+<li>Maps elements of some structure to actions;</li>
+<li>Evaluates such actions from left to right;</li>
+<li>Collects the result.</li>
+</ol>
+<h2 id="sequencea">SequenceA<a class="headerlink" href="#sequencea" title="Permanent link">&para;</a></h2>
+<p>The <code class="codehilite"><span class="nf">sequenceA</span></code> operation flips the two layers of structures/contexts and
+does not allow any additional functions to be applied to values contained 
+inside.</p>
+<details class="example"><summary><code>sequenceA</code></summary><div class="codehilite"><pre><span></span><span class="nf">fmap</span> <span class="kt">Just</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="c1">-- ==&gt; [Just 1, Just 2, Just 3]</span>
+
+<span class="nf">sequenceA</span> <span class="o">$</span> <span class="n">fmap</span> <span class="kt">Just</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="c1">-- ==&gt; Just [1, 2, 3]</span>
+
+<span class="nf">sequenceA</span> <span class="p">[</span><span class="kt">Just</span> <span class="mi">1</span><span class="p">,</span> <span class="kt">Just</span> <span class="mi">2</span><span class="p">,</span> <span class="kt">Just</span> <span class="mi">3</span><span class="p">]</span>
+<span class="c1">-- ==&gt; Just [1, 2, 3]</span>
+</pre></div>
+
+</details>
+<h2 id="traverse">Traverse<a class="headerlink" href="#traverse" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="nf">traverse</span> <span class="ow">::</span> <span class="p">(</span><span class="kt">Applicative</span> <span class="n">f</span><span class="p">,</span> <span class="kt">Traversable</span> <span class="n">t</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="p">(</span><span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="n">b</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="n">t</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="p">(</span><span class="n">t</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+<p>Which is similar to <code class="codehilite"><span class="nf">fmap</span></code> and <code class="codehilite"><span class="p">(</span><span class="o">=&lt;&lt;</span><span class="p">)</span></code> (flipped bind):</p>
+<div class="codehilite"><pre><span></span><span class="nf">fmap</span>     <span class="ow">::</span> <span class="kt">Functor</span> <span class="n">f</span>                      <span class="ow">=&gt;</span> <span class="p">(</span><span class="n">a</span> <span class="ow">-&gt;</span>   <span class="n">b</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">f</span>    <span class="n">b</span>
+<span class="p">(</span><span class="o">=&lt;&lt;</span><span class="p">)</span>    <span class="ow">::</span> <span class="kt">Monad</span> <span class="n">m</span>                        <span class="ow">=&gt;</span> <span class="p">(</span><span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">m</span> <span class="n">b</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="n">m</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">m</span>    <span class="n">b</span>
+<span class="nf">traverse</span> <span class="ow">::</span> <span class="p">(</span><span class="kt">Applicative</span> <span class="n">f</span><span class="p">,</span> <span class="kt">Traversable</span> <span class="n">t</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="p">(</span><span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="n">b</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="n">t</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="p">(</span><span class="n">t</span> <span class="n">b</span><span class="p">)</span> 
+</pre></div>
+
+<p>The same beneath-structure value-mapping still occurs like <code class="codehilite"><span class="nf">fmap</span></code>, like
+flipped bind, <code class="codehilite"><span class="nf">traverse</span></code> also generates more structure. Notice that
+different to <code class="codehilite"><span class="p">(</span><span class="o">=&lt;&lt;</span><span class="p">)</span></code>, <code class="codehilite"><span class="nf">traverse</span></code> can have different structure type
+in the result compared to the structure that was lifted for the function to
+apply to, and eventually will flip the two structures <code class="codehilite"><span class="nf">f</span></code> and <code class="codehilite"><span class="nf">t</span></code>
+around.</p>
+<h2 id="mapm-and-traverse-sequence-and-sequencea">MapM and Traverse, Sequence and SequenceA<a class="headerlink" href="#mapm-and-traverse-sequence-and-sequencea" title="Permanent link">&para;</a></h2>
+<p>There are legacy operations <code class="codehilite"><span class="nf">mapM</span></code> and <code class="codehilite"><span class="nf">sequence</span></code> which are defined
+in GHC 7.10 and before which are less general versions of <code class="codehilite"><span class="nf">traverse</span></code> and
+<code class="codehilite"><span class="nf">sequenceA</span></code> respectively.</p>
+<div class="codehilite"><pre><span></span><span class="nf">mapM</span>     <span class="ow">::</span> <span class="kt">Monad</span> <span class="n">m</span>                        <span class="ow">=&gt;</span> <span class="p">(</span><span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">m</span> <span class="n">b</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="kt">[]</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">m</span> <span class="p">(</span><span class="kt">[]</span> <span class="n">b</span><span class="p">)</span>
+<span class="nf">traverse</span> <span class="ow">::</span> <span class="p">(</span><span class="kt">Applicative</span> <span class="n">f</span><span class="p">,</span> <span class="kt">Traversable</span> <span class="n">t</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="p">(</span><span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="n">b</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="n">t</span>  <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="p">(</span><span class="n">t</span>  <span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+<p>Notice that <code class="codehilite"><span class="nf">traverse</span></code> is a generalization of <code class="codehilite"><span class="nf">mapM</span></code> to other
+<code class="codehilite"><span class="kt">Traversable</span></code> structures not just limited to lists <code class="codehilite"><span class="kt">[]</span></code>, and also
+loosening the typeclass constraint from <code class="codehilite"><span class="kt">Monad</span></code> to only requring an
+<code class="codehilite"><span class="kt">Applicative</span></code>.</p>
+<div class="codehilite"><pre><span></span><span class="nf">sequence</span>  <span class="ow">::</span> <span class="kt">Monad</span> <span class="n">m</span>                        <span class="ow">=&gt;</span> <span class="kt">[]</span> <span class="p">(</span><span class="n">m</span> <span class="n">a</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="n">m</span> <span class="p">(</span><span class="kt">[]</span> <span class="n">a</span><span class="p">)</span>
+<span class="nf">sequenceA</span> <span class="ow">::</span> <span class="p">(</span><span class="kt">Applicative</span> <span class="n">f</span><span class="p">,</span> <span class="kt">Traversable</span> <span class="n">t</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="n">t</span>  <span class="p">(</span><span class="n">f</span> <span class="n">a</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="n">f</span> <span class="p">(</span><span class="n">t</span>  <span class="n">a</span><span class="p">)</span>
+</pre></div>
+
+<p>Notice that <code class="codehilite"><span class="nf">sequenceA</span></code> is a generalization of <code class="codehilite"><span class="nf">sequence</span></code> in both
+generalizing to <code class="codehilite"><span class="kt">Traversable</span></code> structures not only restricted to lists 
+<code class="codehilite"><span class="kt">[]</span></code>, but also loosening the typeclass constraint from <code class="codehilite"><span class="kt">Monad</span></code> to
+<code class="codehilite"><span class="kt">Applicative</span></code>.</p>
+<h2 id="use-case">Use Case<a class="headerlink" href="#use-case" title="Permanent link">&para;</a></h2>
+<p><code class="codehilite"><span class="kt">Traversable</span></code> is useful for flipping two type constructors (optionally
+also mapping in the process).</p>
+<details class="example"><summary><code class="codehilite"><span class="kt">Traversable</span></code></summary><p>It may be case that some function returns a list of <code class="codehilite"><span class="kt">Maybe</span></code>s, i.e.
+<code class="codehilite"><span class="p">[</span><span class="kt">Maybe</span> <span class="n">a</span><span class="p">]</span></code>, but we may want <code class="codehilite"><span class="kt">Maybe</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span></code> instead. Semantically,
+it may convey different meaning: a list of possible values is different from
+a possible list of values.</p>
+</details>
+<h2 id="traversable-laws">Traversable Laws<a class="headerlink" href="#traversable-laws" title="Permanent link">&para;</a></h2>
+<h3 id="traverse_1">traverse<a class="headerlink" href="#traverse_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Naturality</strong>.</p>
+<div class="codehilite"><pre><span></span><span class="nf">t</span> <span class="o">.</span> <span class="n">traverse</span> <span class="n">f</span> <span class="ow">=</span> <span class="n">traverse</span> <span class="p">(</span><span class="n">t</span> <span class="o">.</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+</li>
+<li>
+<p><strong>Identity</strong>.</p>
+<div class="codehilite"><pre><span></span><span class="nf">traverse</span> <span class="kt">Identity</span> <span class="ow">=</span> <span class="kt">Identity</span>
+</pre></div>
+
+</li>
+<li>
+<p><strong>Composition</strong>.</p>
+<div class="codehilite"><pre><span></span><span class="nf">traverse</span> <span class="p">(</span><span class="kt">Compose</span> <span class="o">.</span> <span class="n">fmap</span> <span class="n">g</span> <span class="o">.</span> <span class="n">f</span><span class="p">)</span> <span class="ow">=</span> <span class="kt">Compose</span> <span class="o">.</span> <span class="n">fmap</span> <span class="p">(</span><span class="n">traverse</span> <span class="n">g</span><span class="p">)</span> <span class="o">.</span> <span class="n">traverse</span> <span class="n">f</span>
+</pre></div>
+
+</li>
+</ol>
+<h3 id="sequencea_1">sequenceA<a class="headerlink" href="#sequencea_1" title="Permanent link">&para;</a></h3>
+<p>The <code class="codehilite"><span class="nf">sequenceA</span></code> must satisfy:</p>
+<ol>
+<li>
+<p><strong>Naturality</strong>.</p>
+<div class="codehilite"><pre><span></span><span class="nf">t</span> <span class="o">.</span> <span class="n">sequenceA</span> <span class="ow">=</span> <span class="n">sequenceA</span> <span class="o">.</span> <span class="n">fmap</span> <span class="n">t</span>
+</pre></div>
+
+</li>
+<li>
+<p><strong>Identity</strong>.</p>
+<div class="codehilite"><pre><span></span><span class="nf">sequenceA</span> <span class="o">.</span> <span class="n">fmap</span> <span class="kt">Identity</span> <span class="ow">=</span> <span class="kt">Identity</span>
+</pre></div>
+
+</li>
+<li>
+<p><strong>Composition</strong>.</p>
+<div class="codehilite"><pre><span></span><span class="nf">sequenceA</span> <span class="o">.</span> <span class="n">fmap</span> <span class="kt">Compose</span> <span class="ow">=</span> <span class="kt">Compose</span> <span class="o">.</span> <span class="n">fmap</span> <span class="n">sequenceA</span> <span class="o">.</span> <span class="n">sequenceA</span>
+</pre></div>
+
+</li>
+</ol>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../20-foldable/notes/" title="Foldable" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Foldable
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../misc/y-combinator/" title="Y Combinator" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Y Combinator
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.245445c6.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
