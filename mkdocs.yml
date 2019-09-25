@@ -27,6 +27,7 @@ nav:
   - 'Monads': '18-monads/notes.md'
   - 'Foldable': '20-foldable/notes.md'
   - 'Traversable': '21-traversable/notes.md'
+  - 'Reader': '22-reader/notes.md'
   - 'Y Combinator': 'misc/y-combinator.md'
 
 # Theme
