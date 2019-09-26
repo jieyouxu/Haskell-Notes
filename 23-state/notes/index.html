@@ -36,7 +36,7 @@
     
     
       
-        <title>Foldable - Haskell Notes</title>
+        <title>State - Haskell Notes</title>
       
     
     
@@ -85,7 +85,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#foldable" tabindex="1" class="md-skip">
+      <a href="#state" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -111,7 +111,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Foldable
+                State
               
             </span>
           
@@ -436,97 +436,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Foldable
-      </label>
-    
-    <a href="./" title="Foldable" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../20-foldable/notes/" title="Foldable" class="md-nav__link">
       Foldable
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#derived-operations" title="Derived Operations" class="md-nav__link">
-    Derived Operations
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#to-list" title="To List" class="md-nav__link">
-    To List
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#length" title="Length" class="md-nav__link">
-    Length
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#element-of" title="Element Of" class="md-nav__link">
-    Element Of
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#largest-and-least-element" title="Largest and Least Element" class="md-nav__link">
-    Largest and Least Element
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sum-and-product" title="Sum and Product" class="md-nav__link">
-    Sum and Product
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#null" title="Null" class="md-nav__link">
-    Null
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
     
@@ -558,11 +472,49 @@
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../23-state/notes/" title="State" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        State
+      </label>
+    
+    <a href="./" title="State" class="md-nav__link md-nav__link--active">
       State
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#state-newtype" title="State Newtype" class="md-nav__link">
+    State Newtype
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
     
@@ -599,56 +551,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#derived-operations" title="Derived Operations" class="md-nav__link">
-    Derived Operations
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#to-list" title="To List" class="md-nav__link">
-    To List
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#length" title="Length" class="md-nav__link">
-    Length
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#element-of" title="Element Of" class="md-nav__link">
-    Element Of
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#largest-and-least-element" title="Largest and Least Element" class="md-nav__link">
-    Largest and Least Element
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sum-and-product" title="Sum and Product" class="md-nav__link">
-    Sum and Product
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#null" title="Null" class="md-nav__link">
-    Null
+  <a href="#state-newtype" title="State Newtype" class="md-nav__link">
+    State Newtype
   </a>
   
 </li>
@@ -669,71 +573,86 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/jieyouxu/Haskell-Notes/edit/master/docs/20-foldable/notes.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/jieyouxu/Haskell-Notes/edit/master/docs/23-state/notes.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="foldable">Foldable<a class="headerlink" href="#foldable" title="Permanent link">&para;</a></h1>
-<p>The <code class="codehilite"><span class="kt">Foldable</span></code> typeclass describes a class of datatypes which can be
-folded into a <em>summary value</em>.</p>
-<div class="codehilite"><pre><span></span><span class="c1">-- A MINIMAL annotaion requires that any Foldable typeclass instance must at</span>
-<span class="c1">-- lease specify either foldMap or foldr.</span>
-<span class="kr">class</span> <span class="kt">Foldable</span> <span class="n">t</span> <span class="kr">where</span>
-    <span class="cm">{-# MINIMAL foldMap | foldr #-}</span>
-    <span class="n">fold</span>    <span class="ow">::</span> <span class="kt">Monoid</span> <span class="n">m</span> <span class="ow">=&gt;</span> <span class="n">t</span> <span class="n">m</span> <span class="ow">-&gt;</span> <span class="n">m</span>
-    <span class="n">foldMap</span> <span class="ow">::</span> <span class="kt">Monoid</span> <span class="n">m</span> <span class="ow">=&gt;</span> <span class="p">(</span><span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">m</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="n">t</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">m</span>
+                <h1 id="state">State<a class="headerlink" href="#state" title="Permanent link">&para;</a></h1>
+<p>We often need state — it can be considered data which serves as additional
+context in addition to inputs and outputs of functions, which may change after
+each function's evaluation.</p>
+<h2 id="state-newtype">State Newtype<a class="headerlink" href="#state-newtype" title="Permanent link">&para;</a></h2>
+<p>In Haskell, the <code class="codehilite"><span class="kt">State</span></code> newtype is used to express state which may change 
+in evaluation that does not require mutation (and avoid implicit contexts).</p>
+<p>The <code class="codehilite"><span class="kt">State</span></code> <code class="codehilite"><span class="kt">Monad</span></code> instance grants us access to state that:</p>
+<ol>
+<li>Avoids <code class="codehilite"><span class="kt">IO</span></code>.</li>
+<li>Has data that is self-contained.</li>
+<li>Maintains referential transparency.</li>
+<li>Explicit in type signatures.</li>
+</ol>
+<p>It is most suitable when the programmer needs to keep track of values which 
+change with each evaluation step that may be read or written but <em>without
+mutation</em>.</p>
+<div class="codehilite"><pre><span></span><span class="kr">newtype</span> <span class="kt">State</span> <span class="n">s</span> <span class="n">a</span> <span class="ow">=</span> <span class="kt">State</span> <span class="p">{</span> <span class="n">runState</span> <span class="ow">::</span> <span class="n">s</span> <span class="ow">-&gt;</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="p">}</span>
 </pre></div>
 
-<p>Here <code class="codehilite"><span class="nf">fold</span></code> allows values of type <code class="codehilite"><span class="nf">m</span></code> within some structure <code class="codehilite"><span class="nf">t</span></code>
-to be combined via their <code class="codehilite"><span class="kt">Monoid</span></code> instances.</p>
-<p>The <code class="codehilite"><span class="nf">foldMap</span></code> operation first maps elements of type <code class="codehilite"><span class="nf">a</span></code> to some
-type <code class="codehilite"><span class="nf">m</span></code> which is an instance of <code class="codehilite"><span class="kt">Monoid</span></code> in order to get the
-value-combining capability, and then combines the values into a summary value
-via the <code class="codehilite"><span class="kt">Monoid</span></code> instance.</p>
-<details class="note"><summary>With explicit kind signatures</summary><div class="codehilite"><pre><span></span><span class="kr">class</span> <span class="kt">Foldable</span> <span class="p">(</span><span class="n">t</span> <span class="ow">::</span> <span class="o">*</span> <span class="ow">-&gt;</span> <span class="o">*</span><span class="p">)</span> <span class="kr">where</span>
-    <span class="cm">{-# MINIMAL foldMap | foldr #-}</span>
+<p>!!! "Isomorphism in <code class="codehilite"><span class="kr">newtype</span></code> Declarations"
+    Since <code class="codehilite"><span class="kr">newtype</span></code>s are to be erased at runtime as to not cause additional
+    runtime costs to incur, any functions contained within <code class="codehilite"><span class="kr">newtype</span></code>
+    declarations must be <strong>isomorphic</strong> to the type that is being wrapped.
+    A wrapper type <code class="codehilite"><span class="nf">w</span> <span class="n">a</span></code> is said to be <strong>isomorphic</strong> to its wrapped type
+    <code class="codehilite"><span class="nf">a</span></code> if and only if they can be converted between each other without
+    losing information.</p>
+<div class="codehilite"><pre><span></span>```haskell
+type Isomorphism a b = (a -&gt; b, b -&gt; a)
+```
 </pre></div>
 
-</details>
-<details class="example"><summary><code class="codehilite"><span class="nf">fold</span></code></summary><div class="codehilite"><pre><span></span><span class="nf">fold</span> <span class="p">(</span><span class="o">+</span><span class="p">)</span> <span class="o">$</span> <span class="n">map</span> <span class="kt">Sum</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">5</span><span class="p">]</span>
+
+<p>In the case of the <code class="codehilite"><span class="kt">State</span></code> newtype, where its sole data constructor
+<code class="codehilite"><span class="kt">State</span></code> and record accessor <code class="codehilite"><span class="nf">runState</span></code> has the types:</p>
+<div class="codehilite"><pre><span></span><span class="kt">State</span> <span class="ow">::</span> <span class="p">(</span><span class="n">s</span> <span class="ow">-&gt;</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span> <span class="ow">-&gt;</span> <span class="kt">State</span> <span class="n">s</span> <span class="n">a</span>
+
+<span class="nf">runState</span> <span class="ow">::</span> <span class="kt">State</span> <span class="n">s</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">s</span> <span class="ow">-&gt;</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
 </pre></div>
 
-<p>Notice the <code class="codehilite"><span class="nf">map</span> <span class="kt">Sum</span></code> required to lift <code>[1..5]</code> into their <code class="codehilite"><span class="kt">Sum</span></code>
-<code class="codehilite"><span class="kt">Monoid</span></code> instances.</p>
-</details>
-<details class="example"><summary><code class="codehilite"><span class="nf">foldMap</span></code></summary><div class="codehilite"><pre><span></span><span class="nf">foldMap</span> <span class="kt">Product</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">5</span><span class="p">]</span>
+<p>Notice that the data constructor <code class="codehilite"><span class="kt">State</span></code> takes an input state and returns 
+the output value <code class="codehilite"><span class="nf">a</span></code> in addition to a new state. It is important that the
+state value with each application is chained and passed on to the next 
+application.</p>
+<div class="admonition note">
+<p class="admonition-title"><code class="codehilite"><span class="kt">State</span></code> <code class="codehilite"><span class="kt">Functor</span></code> Instance</p>
+<div class="codehilite"><pre><span></span><span class="kr">instance</span> <span class="kt">Functor</span> <span class="p">(</span><span class="kt">State</span> <span class="n">s</span><span class="p">)</span> <span class="kr">where</span>
+    <span class="n">fmap</span> <span class="n">f</span> <span class="p">(</span><span class="kt">State</span> <span class="n">g</span><span class="p">)</span> <span class="ow">=</span> <span class="kt">State</span> <span class="o">$</span> <span class="nf">\</span><span class="n">oldState</span> <span class="ow">-&gt;</span>
+        <span class="kr">let</span> <span class="p">(</span>  <span class="n">val</span><span class="p">,</span> <span class="n">newState</span><span class="p">)</span> <span class="ow">=</span> <span class="n">g</span> <span class="n">oldState</span>
+        <span class="kr">in</span>  <span class="p">(</span><span class="n">f</span> <span class="n">val</span><span class="p">,</span> <span class="n">newState</span><span class="p">)</span>
 </pre></div>
 
-<p>Here the function argument of <code class="codehilite"><span class="nf">foldMap</span></code> is required to map each elment
-of <code class="codehilite"><span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="mi">5</span><span class="p">]</span></code> into some <code class="codehilite"><span class="kt">Monoid</span></code> instance, in this case 
-<code class="codehilite"><span class="kt">Product</span></code>.</p>
-</details>
-<h2 id="derived-operations">Derived Operations<a class="headerlink" href="#derived-operations" title="Permanent link">&para;</a></h2>
-<h3 id="to-list">To List<a class="headerlink" href="#to-list" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><span class="nf">toList</span> <span class="ow">::</span> <span class="kt">Foldable</span> <span class="n">t</span> <span class="ow">=&gt;</span> <span class="n">t</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><code class="codehilite"><span class="kt">State</span></code> <code class="codehilite"><span class="kt">Applicative</span></code> Instance</p>
+<div class="codehilite"><pre><span></span><span class="kr">instance</span> <span class="kt">Applicative</span> <span class="p">(</span><span class="kt">State</span> <span class="n">s</span><span class="p">)</span> <span class="kr">where</span>
+    <span class="n">pure</span> <span class="n">a</span> <span class="ow">=</span> <span class="kt">State</span> <span class="o">$</span> <span class="nf">\</span><span class="n">s</span> <span class="ow">-&gt;</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+    <span class="p">(</span><span class="kt">State</span> <span class="n">f</span><span class="p">)</span> <span class="o">&lt;*&gt;</span> <span class="p">(</span><span class="kt">State</span> <span class="n">g</span><span class="p">)</span> <span class="ow">=</span> <span class="kt">State</span> <span class="o">$</span> <span class="nf">\</span><span class="n">s0</span> <span class="ow">-&gt;</span>
+        <span class="kr">let</span> <span class="p">(</span><span class="n">fn</span><span class="p">,</span>    <span class="n">s1</span><span class="p">)</span> <span class="ow">=</span> <span class="n">f</span> <span class="n">s0</span>
+            <span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span> <span class="ow">=</span> <span class="n">g</span> <span class="n">s1</span>
+        <span class="kr">in</span>  <span class="p">(</span><span class="n">fn</span> <span class="n">value</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>
 </pre></div>
 
-<h3 id="length">Length<a class="headerlink" href="#length" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><span class="nf">length</span> <span class="ow">::</span> <span class="kt">Foldable</span> <span class="n">t</span> <span class="ow">=&gt;</span> <span class="n">t</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="kt">Int</span>
+</div>
+<div class="admonition note">
+<p class="admonition-title"><code class="codehilite"><span class="kt">State</span></code> <code class="codehilite"><span class="kt">Monad</span></code> Instance</p>
+<div class="codehilite"><pre><span></span><span class="kr">instance</span> <span class="kt">Monad</span> <span class="p">(</span><span class="kt">State</span> <span class="n">s</span><span class="p">)</span> <span class="kr">where</span>
+    <span class="n">return</span> <span class="ow">=</span> <span class="n">pure</span>
+
+    <span class="p">(</span><span class="kt">State</span> <span class="n">f</span><span class="p">)</span> <span class="o">&gt;&gt;=</span> <span class="n">g</span> <span class="ow">=</span> <span class="kt">State</span> <span class="o">$</span> <span class="nf">\</span><span class="n">s0</span> <span class="ow">-&gt;</span>
+        <span class="kr">let</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">s1</span><span class="p">)</span>   <span class="ow">=</span> <span class="n">f</span> <span class="n">s0</span>
+            <span class="p">(</span><span class="kt">State</span> <span class="n">h</span><span class="p">)</span> <span class="ow">=</span> <span class="n">g</span> <span class="n">a</span>
+        <span class="kr">in</span>  <span class="n">h</span> <span class="n">s1</span>
 </pre></div>
 
-<h3 id="element-of">Element Of<a class="headerlink" href="#element-of" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><span class="nf">elem</span> <span class="ow">::</span> <span class="p">(</span><span class="kt">Eq</span> <span class="n">a</span><span class="p">,</span> <span class="kt">Foldable</span> <span class="n">t</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">t</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="kt">Bool</span>
-</pre></div>
-
-<h3 id="largest-and-least-element">Largest and Least Element<a class="headerlink" href="#largest-and-least-element" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><span class="nf">maximum</span> <span class="ow">::</span> <span class="kt">Ord</span> <span class="n">a</span> <span class="ow">=&gt;</span> <span class="n">t</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">a</span>
-<span class="nf">minimum</span> <span class="ow">::</span> <span class="kt">Ord</span> <span class="n">a</span> <span class="ow">=&gt;</span> <span class="n">t</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">a</span>
-</pre></div>
-
-<h3 id="sum-and-product">Sum and Product<a class="headerlink" href="#sum-and-product" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><span class="nf">sum</span> <span class="ow">::</span> <span class="p">(</span><span class="kt">Foldable</span> <span class="n">t</span><span class="p">,</span> <span class="kt">Num</span> <span class="n">a</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="n">t</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">a</span>
-<span class="nf">product</span> <span class="ow">::</span> <span class="p">(</span><span class="kt">Foldable</span> <span class="n">t</span><span class="p">,</span> <span class="kt">Num</span> <span class="n">a</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="n">t</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="n">a</span>
-</pre></div>
-
-<h2 id="null">Null<a class="headerlink" href="#null" title="Permanent link">&para;</a></h2>
-<p>Is the <code class="codehilite"><span class="kt">Foldable</span></code> structure empty?</p>
-<div class="codehilite"><pre><span></span><span class="nf">null</span> <span class="ow">::</span> <span class="kt">Foldable</span> <span class="n">t</span> <span class="ow">=&gt;</span> <span class="n">t</span> <span class="n">a</span> <span class="ow">-&gt;</span> <span class="kt">Bool</span>
-</pre></div>
+</div>
                 
                   
                 
@@ -754,7 +673,7 @@ of <code class="codehilite"><span class="p">[</span><span class="mi">1</span><sp
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../18-monads/notes/" title="Monads" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../22-reader/notes/" title="Reader" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -763,19 +682,19 @@ of <code class="codehilite"><span class="p">[</span><span class="mi">1</span><sp
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Monads
+                Reader
               </span>
             </div>
           </a>
         
         
-          <a href="../../21-traversable/notes/" title="Traversable" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../misc/y-combinator/" title="Y Combinator" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Traversable
+                Y Combinator
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
