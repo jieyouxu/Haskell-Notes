@@ -29,6 +29,8 @@ nav:
   - 'Traversable': '21-traversable/notes.md'
   - 'Reader': '22-reader/notes.md'
   - 'State': '23-state/notes.md'
+  - 'Alternative': 'misc/alternative.md'
+  - 'MonadPlus': 'misc/monadplus.md'
   - 'Y Combinator': 'misc/y-combinator.md'
 
 # Theme
