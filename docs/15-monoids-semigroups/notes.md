@@ -191,7 +191,15 @@ instance (Monoid a, Monoid b, Monoid c)
 
 ## Semigroup
 
-A `#!hs Semigroup` is a `#!hs Monoid` without the identity.
+A `#!hs Semigroup` is a `#!hs Monoid` without the identity. That is, we can
+also define `#!hs Monoid` to be a further constrained `#!hs Semigroup`.
+
+```haskell
+class Semigroup m => Monoid m where
+    mempty :: m -- Identity element
+```
+
+With the `#!hs mappend` coming from the `#!hs Semigroup` constraint.
 
 Given some set $S$ and a binary associative operation 
 $\bullet \colon S \times S \to S$, then $(S, \bullet)$ is a `#!hs Semigroup` iff it 
